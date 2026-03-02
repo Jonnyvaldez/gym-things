@@ -305,6 +305,41 @@
   .fsi-m span{margin-right:6px}
   .fsi-m .hi{color:var(--pink-bright)}
 
+  /* Serving adjuster */
+  .serve{
+    display:none;background:var(--surface);border:1.5px solid var(--pink);
+    border-radius:var(--radius);padding:14px;margin-bottom:10px;
+  }
+  .serve.show{display:block}
+  .serve-name{font-weight:600;font-size:.84em;margin-bottom:8px;color:var(--text)}
+  .serve-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .serve-btn{
+    width:32px;height:32px;border-radius:50%;border:1px solid var(--border);
+    background:var(--bg);color:var(--text);font-size:1.1em;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-family:inherit;
+  }
+  .serve-btn:active{background:var(--pink-glow);border-color:var(--pink)}
+  .serve-inp{
+    width:56px;text-align:center;border:1px solid var(--border);border-radius:8px;
+    padding:7px;font-size:.88em;background:var(--bg);color:var(--text);
+    font-family:inherit;outline:none;
+  }
+  .serve-inp:focus{border-color:var(--pink)}
+  .serve-unit{font-size:.76em;color:var(--text-muted);min-width:30px}
+  .serve-macros{font-size:.72em;color:var(--text-dim);margin-bottom:10px}
+  .serve-macros span{margin-right:6px}
+  .serve-macros .hi{color:var(--gold);font-weight:600}
+  .serve-btns{display:flex;gap:8px}
+  .serve-add{
+    flex:1;padding:10px;background:var(--pink);border:none;border-radius:10px;
+    color:#fff;font-size:.78em;font-weight:600;font-family:inherit;cursor:pointer;
+  }
+  .serve-add:active{opacity:.85}
+  .serve-cancel{
+    padding:10px 14px;background:none;border:1px solid var(--border);border-radius:10px;
+    color:var(--text-muted);font-size:.78em;font-family:inherit;cursor:pointer;
+  }
+
   /* Quick adds */
   .qa-label{font-size:.68em;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:8px}
   .qa-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
@@ -665,16 +700,31 @@
     <div class="fsug" id="fSug"></div>
   </div>
 
+  <div class="serve" id="serveAdj">
+    <div class="serve-name" id="serveName"></div>
+    <div class="serve-row">
+      <button class="serve-btn" onclick="adjServe(-1)">&minus;</button>
+      <input class="serve-inp" type="number" inputmode="decimal" id="serveAmt" value="1" oninput="updServe()">
+      <span class="serve-unit" id="serveUnit">oz</span>
+      <button class="serve-btn" onclick="adjServe(1)">+</button>
+    </div>
+    <div class="serve-macros" id="serveMacros"></div>
+    <div class="serve-btns">
+      <button class="serve-add" onclick="confirmServe()">Add to Log</button>
+      <button class="serve-cancel" onclick="cancelServe()">Cancel</button>
+    </div>
+  </div>
+
   <div class="qa-label">Quick Add</div>
   <div class="qa-grid" id="qaGrid">
-    <button class="qa" onclick="qaAdd(0)">Chicken Breast</button>
-    <button class="qa" onclick="qaAdd(1)">White Rice</button>
-    <button class="qa" onclick="qaAdd(2)">Eggs (2)</button>
-    <button class="qa" onclick="qaAdd(3)">Protein Shake</button>
-    <button class="qa" onclick="qaAdd(4)">Greek Yogurt</button>
-    <button class="qa" onclick="qaAdd(5)">Sweet Potato</button>
-    <button class="qa" onclick="qaAdd(6)">Banana</button>
-    <button class="qa" onclick="qaAdd(7)">Meatballs (4)</button>
+    <button class="qa" onclick="openServe(0)">Chicken Breast</button>
+    <button class="qa" onclick="openServe(11)">White Rice</button>
+    <button class="qa" onclick="openServe(5)">Eggs</button>
+    <button class="qa" onclick="openServe(9)">Protein Shake</button>
+    <button class="qa" onclick="openServe(7)">Greek Yogurt</button>
+    <button class="qa" onclick="openServe(13)">Sweet Potato</button>
+    <button class="qa" onclick="openServe(19)">Banana</button>
+    <button class="qa" onclick="openServe(31)">Meatballs</button>
   </div>
 
   <button class="cf-toggle" onclick="document.getElementById('cfForm').classList.toggle('show')">+ Add something not listed</button>
@@ -791,53 +841,51 @@ function getPhase(){
 }
 
 var FOODS=[
-  {n:"Chicken Breast (6oz)",c:280,p:52,cb:0,f:6},
-  {n:"Ground Beef 90/10 (4oz)",c:200,p:22,cb:0,f:11},
-  {n:"Ground Turkey (4oz)",c:170,p:21,cb:0,f:9},
-  {n:"Salmon Fillet (6oz)",c:350,p:34,cb:0,f:22},
-  {n:"Shrimp (6oz)",c:170,p:36,cb:1,f:2},
-  {n:"Eggs (2 large)",c:140,p:12,cb:1,f:10},
-  {n:"Egg Whites (4)",c:68,p:14,cb:1,f:0},
-  {n:"Greek Yogurt (1 cup)",c:130,p:22,cb:8,f:0},
-  {n:"Cottage Cheese (1 cup)",c:180,p:24,cb:8,f:5},
-  {n:"Protein Shake (1 scoop)",c:120,p:24,cb:3,f:1},
-  {n:"Protein Bar",c:220,p:20,cb:24,f:8},
-  {n:"White Rice (1 cup)",c:200,p:4,cb:44,f:0},
-  {n:"Brown Rice (1 cup)",c:215,p:5,cb:45,f:2},
-  {n:"Sweet Potato (1 medium)",c:110,p:2,cb:26,f:0},
-  {n:"Oatmeal (1/2 cup dry)",c:150,p:5,cb:27,f:3},
-  {n:"Whole Wheat Bread (2 slices)",c:160,p:8,cb:28,f:2},
-  {n:"Pasta (1 cup)",c:200,p:7,cb:40,f:1},
-  {n:"Tortilla (large flour)",c:210,p:5,cb:36,f:5},
-  {n:"Rice Cakes (2)",c:70,p:1,cb:15,f:0},
-  {n:"Banana",c:105,p:1,cb:27,f:0},
-  {n:"Apple",c:95,p:0,cb:25,f:0},
-  {n:"Blueberries (1 cup)",c:85,p:1,cb:21,f:0},
-  {n:"Strawberries (1 cup)",c:50,p:1,cb:12,f:0},
-  {n:"Avocado (half)",c:120,p:1,cb:6,f:11},
-  {n:"Broccoli (1 cup)",c:55,p:4,cb:11,f:0},
-  {n:"Spinach (2 cups)",c:14,p:2,cb:2,f:0},
-  {n:"Mixed Salad",c:20,p:2,cb:3,f:0},
-  {n:"Almonds (1oz)",c:160,p:6,cb:6,f:14},
-  {n:"Peanut Butter (2 tbsp)",c:190,p:7,cb:7,f:16},
-  {n:"Olive Oil (1 tbsp)",c:120,p:0,cb:0,f:14},
-  {n:"Cheese (1oz cheddar)",c:110,p:7,cb:0,f:9},
-  {n:"Meatballs (4 beef)",c:280,p:24,cb:8,f:16},
-  {n:"Turkey Meatballs (4)",c:220,p:24,cb:6,f:10},
-  {n:"Chicken Teriyaki (6oz)",c:320,p:40,cb:16,f:8},
-  {n:"Steak (6oz sirloin)",c:310,p:46,cb:0,f:12},
-  {n:"Tuna (1 can)",c:120,p:27,cb:0,f:1},
-  {n:"Black Beans (1/2 cup)",c:115,p:8,cb:20,f:0},
-  {n:"Hummus (2 tbsp)",c:70,p:2,cb:6,f:5},
-  {n:"Chipotle Bowl (chicken)",c:665,p:45,cb:72,f:18},
-  {n:"Acai Bowl (medium)",c:450,p:8,cb:68,f:16},
-  {n:"Coffee + Cream",c:50,p:1,cb:1,f:5},
-  {n:"Almond Milk (1 cup)",c:30,p:1,cb:1,f:2},
+  {n:"Chicken Breast",u:"oz",s:6,c:280,p:52,cb:0,f:6},
+  {n:"Ground Beef 90/10",u:"oz",s:4,c:200,p:22,cb:0,f:11},
+  {n:"Ground Turkey",u:"oz",s:4,c:170,p:21,cb:0,f:9},
+  {n:"Salmon Fillet",u:"oz",s:6,c:350,p:34,cb:0,f:22},
+  {n:"Shrimp",u:"oz",s:6,c:170,p:36,cb:1,f:2},
+  {n:"Eggs",u:"eggs",s:2,c:140,p:12,cb:1,f:10},
+  {n:"Egg Whites",u:"whites",s:4,c:68,p:14,cb:1,f:0},
+  {n:"Greek Yogurt",u:"cup",s:1,c:130,p:22,cb:8,f:0},
+  {n:"Cottage Cheese",u:"cup",s:1,c:180,p:24,cb:8,f:5},
+  {n:"Protein Shake",u:"scoop",s:1,c:120,p:24,cb:3,f:1},
+  {n:"Protein Bar",u:"bar",s:1,c:220,p:20,cb:24,f:8},
+  {n:"White Rice",u:"cup",s:1,c:200,p:4,cb:44,f:0},
+  {n:"Brown Rice",u:"cup",s:1,c:215,p:5,cb:45,f:2},
+  {n:"Sweet Potato",u:"medium",s:1,c:110,p:2,cb:26,f:0},
+  {n:"Oatmeal",u:"cup",s:0.5,c:150,p:5,cb:27,f:3},
+  {n:"Whole Wheat Bread",u:"slices",s:2,c:160,p:8,cb:28,f:2},
+  {n:"Pasta",u:"cup",s:1,c:200,p:7,cb:40,f:1},
+  {n:"Tortilla (flour)",u:"large",s:1,c:210,p:5,cb:36,f:5},
+  {n:"Rice Cakes",u:"cakes",s:2,c:70,p:1,cb:15,f:0},
+  {n:"Banana",u:"banana",s:1,c:105,p:1,cb:27,f:0},
+  {n:"Apple",u:"apple",s:1,c:95,p:0,cb:25,f:0},
+  {n:"Blueberries",u:"cup",s:1,c:85,p:1,cb:21,f:0},
+  {n:"Strawberries",u:"cup",s:1,c:50,p:1,cb:12,f:0},
+  {n:"Avocado",u:"half",s:1,c:120,p:1,cb:6,f:11},
+  {n:"Broccoli",u:"cup",s:1,c:55,p:4,cb:11,f:0},
+  {n:"Spinach",u:"cups",s:2,c:14,p:2,cb:2,f:0},
+  {n:"Mixed Salad",u:"cup",s:1,c:20,p:2,cb:3,f:0},
+  {n:"Almonds",u:"oz",s:1,c:160,p:6,cb:6,f:14},
+  {n:"Peanut Butter",u:"tbsp",s:2,c:190,p:7,cb:7,f:16},
+  {n:"Olive Oil",u:"tbsp",s:1,c:120,p:0,cb:0,f:14},
+  {n:"Cheese (cheddar)",u:"oz",s:1,c:110,p:7,cb:0,f:9},
+  {n:"Meatballs (beef)",u:"meatballs",s:4,c:280,p:24,cb:8,f:16},
+  {n:"Turkey Meatballs",u:"meatballs",s:4,c:220,p:24,cb:6,f:10},
+  {n:"Chicken Teriyaki",u:"oz",s:6,c:320,p:40,cb:16,f:8},
+  {n:"Steak (sirloin)",u:"oz",s:6,c:310,p:46,cb:0,f:12},
+  {n:"Tuna",u:"can",s:1,c:120,p:27,cb:0,f:1},
+  {n:"Black Beans",u:"cup",s:0.5,c:115,p:8,cb:20,f:0},
+  {n:"Hummus",u:"tbsp",s:2,c:70,p:2,cb:6,f:5},
+  {n:"Chipotle Bowl",u:"bowl",s:1,c:665,p:45,cb:72,f:18},
+  {n:"Acai Bowl",u:"bowl",s:1,c:450,p:8,cb:68,f:16},
+  {n:"Coffee + Cream",u:"cup",s:1,c:50,p:1,cb:1,f:5},
+  {n:"Almond Milk",u:"cup",s:1,c:30,p:1,cb:1,f:2},
 ];
 
-var QA=[
-  FOODS[0],FOODS[11],FOODS[5],FOODS[9],FOODS[7],FOODS[13],FOODS[19],FOODS[31]
-];
+var QA_IDX=[0,11,5,9,7,13,19,31];
 
 function ld(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
 function sv(){try{localStorage.setItem(SK,JSON.stringify(st))}catch(e){}}
@@ -979,23 +1027,67 @@ var fIn=document.getElementById('fIn'),fSug=document.getElementById('fSug');
 fIn.addEventListener('input',function(){
   var q=this.value.toLowerCase().trim();
   if(q.length<2){fSug.classList.remove('show');return}
-  var m=FOODS.filter(function(f){return f.n.toLowerCase().indexOf(q)>-1}).slice(0,6);
+  var m=FOODS.map(function(f,i){return{f:f,i:i}}).filter(function(o){return o.f.n.toLowerCase().indexOf(q)>-1}).slice(0,6);
   if(!m.length){fSug.innerHTML='<div class="fsi"><div class="fsi-n" style="color:var(--text-muted)">No matches — try "Add something not listed" below</div></div>';fSug.classList.add('show');return}
-  fSug.innerHTML=m.map(function(f,i){
-    return'<div class="fsi" onclick="addSug('+FOODS.indexOf(f)+')"><div class="fsi-n">'+f.n+'</div><div class="fsi-m"><span class="hi">'+f.c+' cal</span><span>'+f.p+'g P</span><span>'+f.cb+'g C</span><span>'+f.f+'g F</span></div></div>';
+  fSug.innerHTML=m.map(function(o){
+    var f=o.f;
+    return'<div class="fsi" onclick="openServe('+o.i+')"><div class="fsi-n">'+f.n+'</div><div class="fsi-m"><span class="hi">'+f.c+' cal</span> per '+f.s+' '+f.u+' <span>'+f.p+'g P</span><span>'+f.cb+'g C</span><span>'+f.f+'g F</span></div></div>';
   }).join('');
   fSug.classList.add('show');
 });
 
 fIn.addEventListener('blur',function(){setTimeout(function(){fSug.classList.remove('show')},200)});
 
-window.addSug=function(i){
+// Serving adjuster
+var pendServe=null;
+
+window.openServe=function(i){
   var f=FOODS[i];if(!f)return;
-  addToLog({n:f.n,c:f.c,p:f.p,cb:f.cb,f:f.f,meal:curMeal});
-  fIn.value='';fSug.classList.remove('show');
+  pendServe={i:i,amt:f.s};
+  document.getElementById('serveName').textContent=f.n;
+  document.getElementById('serveAmt').value=f.s;
+  document.getElementById('serveUnit').textContent=f.u;
+  updServe();
+  document.getElementById('serveAdj').classList.add('show');
+  fSug.classList.remove('show');fIn.value='';
 };
 
-window.qaAdd=function(i){addToLog({n:QA[i].n,c:QA[i].c,p:QA[i].p,cb:QA[i].cb,f:QA[i].f,meal:curMeal})};
+window.adjServe=function(dir){
+  if(!pendServe)return;
+  var f=FOODS[pendServe.i],inp=document.getElementById('serveAmt');
+  var step=(['cup','cups','tbsp','half'].indexOf(f.u)>-1)?0.25:1;
+  var v=Math.max(step,parseFloat(inp.value||0)+dir*step);
+  inp.value=parseFloat(v.toFixed(2));
+  updServe();
+};
+
+window.updServe=function(){
+  if(!pendServe)return;
+  var f=FOODS[pendServe.i];
+  var amt=parseFloat(document.getElementById('serveAmt').value)||0;
+  var r=f.s?amt/f.s:1;
+  pendServe.amt=amt;
+  document.getElementById('serveMacros').innerHTML=
+    '<span class="hi">'+Math.round(f.c*r)+' cal</span><span>'+Math.round(f.p*r)+'g P</span><span>'+Math.round(f.cb*r)+'g C</span><span>'+Math.round(f.f*r)+'g F</span>';
+};
+
+window.confirmServe=function(){
+  if(!pendServe)return;
+  var f=FOODS[pendServe.i],amt=pendServe.amt;
+  var r=f.s?amt/f.s:1;
+  addToLog({
+    n:f.n+' ('+amt+' '+f.u+')',
+    c:Math.round(f.c*r),p:Math.round(f.p*r),
+    cb:Math.round(f.cb*r),f:Math.round(f.f*r),
+    meal:curMeal
+  });
+  cancelServe();
+};
+
+window.cancelServe=function(){
+  pendServe=null;
+  document.getElementById('serveAdj').classList.remove('show');
+};
 
 window.addCF=function(){
   var n=document.getElementById('cfN').value.trim();
