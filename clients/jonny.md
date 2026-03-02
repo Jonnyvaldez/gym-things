@@ -87,7 +87,7 @@
 | 2 | Leg Press | 3 | 10–12 | 2.5 min | Feet mid-platform, full depth, don't lock knees |
 | 3 | Barbell RDL | 3 | 8–10 | 2.5 min | Push hips back, bar close to shins, feel the hamstring stretch |
 | 4 | Leg Extension | 2 | 12–15 | 2 min | Squeeze at top, 2 sec hold, slow negative |
-| 5 | Standing Calf Raise | 2 | 12–15 | 1.5 min | Full stretch at bottom, pause at top |
+| 5 | Bulgarian Split Squat (DBs) | 2 | 8–10/side | 2.5 min | Front foot flat, slight forward lean, control descent — quad and glute killer |
 
 **Total: 13 sets | ~45 min**
 
@@ -152,15 +152,14 @@
 
 | Muscle Group | Sets/Week | Frequency | Hit On |
 |-------------|-----------|-----------|--------|
-| Quads | ~10 | 2x/week | Lower A + Lower B |
-| Glutes | ~9 | 2x/week | Lower A + Lower B |
+| Quads | ~12 | 2x/week | Lower A (hack squat + leg press + leg ext + BSS) + Lower B |
+| Glutes | ~9 | 2x/week | Lower A (RDL + BSS) + Lower B (hip thrust + lunge) |
 | Hamstrings | ~8 | 2x/week | Lower A + Lower B |
 | Chest | ~8 | 2x/week | Upper Push + Day 5 (overhead press) |
 | Back | ~9 | 2x/week | Upper Pull + indirect |
 | Shoulders | ~10 | 3x/week | Push + Pull + Day 5 |
 | Triceps | ~7 | 2x/week | Push + Day 5 |
 | Biceps | ~5 | 2x/week | Pull + Day 5 |
-| Calves | ~2 | 1x/week | Lower A |
 | **Total** | **~55 sets** | | |
 
 ---
