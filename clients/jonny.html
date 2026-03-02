@@ -264,178 +264,58 @@
   .mc.cb .v{color:var(--lilac)}
   .mc.f .v{color:var(--mint)}
 
-  /* Meal tabs */
-  .meal-tabs{display:flex;gap:0;margin-bottom:14px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border)}
-  .meal-tab{
-    flex:1;padding:10px 4px;text-align:center;
-    background:var(--surface);color:var(--text-muted);
-    font-size:.7em;font-weight:600;cursor:pointer;
-    border-right:1px solid var(--border);transition:all .15s;
+  /* ---- CHECK-IN ---- */
+  .ci-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:16px;margin-bottom:10px;
   }
-  .meal-tab:last-child{border-right:none}
-  .meal-tab.on{background:var(--accent-glow);color:var(--accent-bright)}
-  .meal-tab .mt-ico{font-size:1.2em;display:block;margin-bottom:2px}
-  .meal-tab .mt-ct{
-    display:inline-block;background:var(--border);color:var(--text-dim);
-    font-size:.85em;padding:0 5px;border-radius:8px;margin-left:2px;min-width:16px;
+  .ci-label{font-size:.68em;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);font-weight:600;margin-bottom:10px}
+  .ci-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .ci-inp{
+    width:90px;background:var(--bg);border:1px solid var(--border);border-radius:8px;
+    padding:10px 12px;color:var(--text);font-size:.92em;font-family:inherit;
+    font-weight:600;outline:none;text-align:center;
   }
-  .meal-tab.on .mt-ct{background:var(--accent);color:#fff}
-
-  /* Search */
-  .fsrch{position:relative;margin-bottom:10px}
-  .fsrch input{
-    width:100%;background:var(--surface);border:1.5px solid var(--border);
-    border-radius:var(--radius);padding:12px 14px 12px 38px;
-    color:var(--text);font-size:.82em;font-family:inherit;outline:none;
+  .ci-inp:focus{border-color:var(--accent)}
+  .ci-inp::placeholder{color:var(--text-muted)}
+  .ci-unit{font-size:.78em;color:var(--text-muted)}
+  .ci-save{
+    margin-left:auto;padding:10px 20px;background:var(--accent);border:none;
+    border-radius:10px;color:#fff;font-size:.78em;font-weight:600;
+    font-family:inherit;cursor:pointer;
   }
-  .fsrch input:focus{border-color:var(--accent)}
-  .fsrch input::placeholder{color:var(--text-muted)}
-  .fsrch .si{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.9em;pointer-events:none}
-  .fsug{
-    position:absolute;top:100%;left:0;right:0;background:var(--surface2);
-    border:1px solid var(--border);border-radius:var(--radius-sm);
-    margin-top:4px;max-height:260px;overflow-y:auto;z-index:50;display:none;
+  .ci-save:active{opacity:.85}
+  .ci-save.saved{background:var(--mint)}
+  .ci-waist-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+  .ci-waist-label{font-size:.72em;color:var(--text-muted);min-width:90px}
+  .ci-waist{width:70px}
+  .ci-phase{
+    font-size:.76em;font-weight:600;padding:6px 12px;border-radius:8px;
+    margin-bottom:10px;text-align:center;
   }
-  .fsug.show{display:block}
-  .fsi{padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer}
-  .fsi:last-child{border:none}
-  .fsi:active{background:var(--accent-soft)}
-  .fsi-n{font-size:.84em;font-weight:600}
-  .fsi-m{font-size:.68em;color:var(--text-muted);margin-top:2px}
-  .fsi-m span{margin-right:6px}
-  .fsi-m .hi{color:var(--accent-bright)}
-
-  /* Serving adjuster */
-  .serve{
-    display:none;background:var(--surface);border:1.5px solid var(--accent);
-    border-radius:var(--radius);padding:14px;margin-bottom:10px;
+  .ci-phase.build{background:var(--accent-soft);color:var(--accent-bright)}
+  .ci-phase.push{background:var(--gold-soft);color:var(--gold)}
+  .ci-phase.peak{background:#d44e4e14;color:#e87070}
+  .ci-phase.deload-phase{background:var(--lilac)14;color:var(--lilac)}
+  .ci-breakdown{font-size:.72em;color:var(--text-muted);margin-top:8px;line-height:1.6}
+  .ci-breakdown b{color:var(--text-dim)}
+  .ci-coach{border-color:var(--accent-glow)}
+  .ci-coach-text{font-size:.8em;line-height:1.6;color:var(--text-dim)}
+  .ci-coach-text b{color:var(--accent-bright);font-weight:600}
+  .ci-trend{font-size:.78em}
+  .ci-trend-row{
+    display:flex;align-items:center;gap:10px;padding:8px 0;
+    border-bottom:1px solid var(--border);
   }
-  .serve.show{display:block}
-  .serve-name{font-weight:600;font-size:.84em;margin-bottom:8px;color:var(--text)}
-  .serve-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-  .serve-btn{
-    width:32px;height:32px;border-radius:50%;border:1px solid var(--border);
-    background:var(--bg);color:var(--text);font-size:1.1em;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;font-family:inherit;
-  }
-  .serve-btn:active{background:var(--accent-glow);border-color:var(--accent)}
-  .serve-inp{
-    width:56px;text-align:center;border:1px solid var(--border);border-radius:8px;
-    padding:7px;font-size:.88em;background:var(--bg);color:var(--text);
-    font-family:inherit;outline:none;
-  }
-  .serve-inp:focus{border-color:var(--accent)}
-  .serve-unit{font-size:.76em;color:var(--text-muted);min-width:30px}
-  .serve-macros{font-size:.72em;color:var(--text-dim);margin-bottom:10px}
-  .serve-macros span{margin-right:6px}
-  .serve-macros .hi{color:var(--gold);font-weight:600}
-  .serve-btns{display:flex;gap:8px}
-  .serve-add{
-    flex:1;padding:10px;background:var(--accent);border:none;border-radius:10px;
-    color:#fff;font-size:.78em;font-weight:600;font-family:inherit;cursor:pointer;
-  }
-  .serve-add:active{opacity:.85}
-  .serve-cancel{
-    padding:10px 14px;background:none;border:1px solid var(--border);border-radius:10px;
-    color:var(--text-muted);font-size:.78em;font-family:inherit;cursor:pointer;
-  }
-
-  /* Quick adds */
-  .qa-label{font-size:.68em;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:8px}
-  .qa-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-  .qa{
-    padding:8px 14px;background:var(--surface);border:1px solid var(--border);
-    border-radius:20px;font-size:.72em;color:var(--text-dim);cursor:pointer;
-    font-family:inherit;transition:all .15s;
-  }
-  .qa:active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent-bright)}
-
-  /* Food log entries */
-  .flog{margin-bottom:12px}
-  .flog-empty{text-align:center;padding:28px 16px;color:var(--text-muted);font-size:.8em}
-  .flog-empty .fle-ico{font-size:2em;margin-bottom:8px;display:block}
-  .fle{
-    display:flex;align-items:center;gap:10px;
-    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
-    padding:12px 14px;margin-bottom:6px;
-  }
-  .fle-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-  .fle-info{flex:1;min-width:0}
-  .fle-name{font-size:.8em;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .fle-macros{font-size:.65em;color:var(--text-muted);margin-top:1px}
-  .fle-cal{font-size:.75em;color:var(--gold);font-weight:600;white-space:nowrap}
-  .fle-rm{color:var(--text-muted);cursor:pointer;font-size:1.3em;padding:6px;line-height:1}
-  .fle-rm:active{color:#e55}
-
-  /* Custom food */
-  .cf-toggle{
-    display:block;width:100%;padding:12px;margin-bottom:10px;
-    background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius-sm);
-    color:var(--text-muted);font-size:.78em;font-family:inherit;cursor:pointer;text-align:center;
-  }
-  .cf-toggle:active{border-color:var(--accent);color:var(--accent)}
-  .cf-form{
-    display:none;background:var(--surface);border:1px solid var(--border);
-    border-radius:var(--radius);padding:16px;margin-bottom:12px;
-  }
-  .cf-form.show{display:block}
-  .cf-form h3{font-size:.78em;color:var(--accent-bright);margin-bottom:10px;font-weight:600}
-  .cfr{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-  .cfr.w{grid-template-columns:1fr}
-  .cff label{font-size:.62em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:3px}
-  .cff input{
-    width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;
-    padding:9px 10px;color:var(--text);font-size:.8em;font-family:inherit;outline:none;
-  }
-  .cff input:focus{border-color:var(--accent)}
-  .cff input::placeholder{color:var(--text-muted)}
-  .cf-add{
-    width:100%;padding:12px;background:var(--accent);border:none;border-radius:10px;
-    color:#fff;font-size:.82em;font-weight:700;font-family:inherit;cursor:pointer;margin-top:4px;
-  }
-  .cf-add:active{opacity:.85}
-
-  /* ---- PHOTO CAPTURE ---- */
-  .snap-area{margin-bottom:14px}
-  .snap-btn{
-    display:flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;padding:12px;
-    background:var(--surface);border:1.5px dashed var(--accent);border-radius:var(--radius);
-    color:var(--accent-bright);font-size:.78em;font-weight:600;font-family:inherit;
-    cursor:pointer;transition:all .15s;
-  }
-  .snap-btn:active{background:var(--accent-glow);transform:scale(.98)}
-  .snap-preview{
-    display:none;margin-top:10px;
-    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-    padding:14px;text-align:center;
-  }
-  .snap-preview.show{display:block}
-  .snap-preview img{
-    width:100%;max-height:200px;object-fit:cover;border-radius:var(--radius-sm);margin-bottom:8px;
-  }
-  .snap-desc{font-size:.74em;color:var(--text-muted);margin-bottom:8px}
-  .snap-hint{font-size:.68em;color:var(--accent);font-weight:500;margin-bottom:6px}
-  .snap-cancel{
-    display:inline-block;padding:6px 16px;
-    background:none;border:1px solid var(--border);border-radius:8px;
-    color:var(--text-muted);font-size:.72em;font-family:inherit;cursor:pointer;
-  }
-  .snap-cancel:active{border-color:#e55;color:#e55}
-  .fle-thumb{
-    width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;cursor:pointer;
-  }
-  .photo-modal{
-    display:none;position:fixed;top:0;left:0;right:0;bottom:0;
-    background:rgba(0,0,0,.85);z-index:200;
-    align-items:center;justify-content:center;padding:20px;
-  }
-  .photo-modal.show{display:flex}
-  .photo-modal img{max-width:100%;max-height:80vh;border-radius:var(--radius);object-fit:contain}
-  .photo-modal-close{
-    position:absolute;top:16px;right:20px;color:#fff;font-size:2em;
-    cursor:pointer;line-height:1;z-index:201;
-  }
+  .ci-trend-row:last-child{border:none}
+  .ci-trend-wk{color:var(--text-muted);font-size:.88em;min-width:52px}
+  .ci-trend-val{font-weight:600;min-width:56px}
+  .ci-trend-delta{font-size:.85em;margin-left:auto}
+  .ci-trend-delta.down{color:var(--mint)}
+  .ci-trend-delta.up{color:var(--gold)}
+  .ci-trend-delta.flat{color:var(--text-muted)}
+  .ci-trend-waist{font-size:.85em;color:var(--text-muted)}
+  .ci-trend-empty{text-align:center;padding:20px;color:var(--text-muted);font-size:.82em}
 
   /* ---- RESET ---- */
   .rst{
@@ -473,7 +353,7 @@
   <div class="nav-t" onclick="go(2)">Day 3</div>
   <div class="nav-t" onclick="go(3)">Day 4</div>
   <div class="nav-t" onclick="go(4)">Day 5</div>
-  <div class="nav-t food" onclick="go(5)">Food</div>
+  <div class="nav-t food" onclick="go(5)">Check-In</div>
 </nav>
 
 <div class="phase" id="phaseBanner"></div>
@@ -530,7 +410,7 @@
 <!-- ============ DAY 2 — Upper Push (Chest + Shoulders + Triceps) ============ -->
 <div class="sec" id="s1">
   <div class="sec-title">Upper Push</div>
-  <div class="sec-meta">Chest + Shoulders + Triceps &bull; 13 sets &bull; ~40 min</div>
+  <div class="sec-meta">Chest + Shoulders + Triceps &bull; 14 sets &bull; ~42 min</div>
   <div class="prog"><div class="prog-bar"><div class="prog-fill" id="pf1"></div></div><div class="prog-lbl" id="pl1">0/5</div></div>
 
   <div class="warmup">
@@ -551,11 +431,11 @@
 
   <div class="xc" data-d="1" data-i="0"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=dumbbell+bench+press+form" target="_blank">DB Bench Press</a></div><div class="xrx"><span>3 sets</span><span>6-8 reps</span><span>3 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Shoulder-friendly, deep stretch at bottom, press up and in</div><div class="swp"><b>Swap:</b> Machine Chest Press</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e0"></div></div>
 
-  <div class="xc" data-d="1" data-i="1"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=incline+dumbbell+press+form" target="_blank">Incline DB Press</a></div><div class="xrx"><span>3 sets</span><span>8-10 reps</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> 30&deg; incline, controlled range, feel the chest</div><div class="swp"><b>Swap:</b> Incline Machine Press</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e1"></div></div>
+  <div class="xc" data-d="1" data-i="1"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=low+to+high+cable+fly+upper+chest" target="_blank">Cable Fly (low-to-high)</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Stretched position at bottom, constant cable tension, squeeze hands together at top &mdash; hits upper chest without another press</div><div class="swp"><b>Swap:</b> Pec Deck / Machine Fly</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e1"></div></div>
 
   <div class="xc" data-d="1" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=seated+dumbbell+shoulder+press+form" target="_blank">Seated DB Shoulder Press</a></div><div class="xrx"><span>3 sets</span><span>8-10 reps</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Pain-free range, controlled path, feel the delts</div><div class="swp"><b>Swap:</b> Machine Shoulder Press</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e2"></div></div>
 
-  <div class="xc" data-d="1" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=cable+lateral+raise+form" target="_blank">Cable Lateral Raise</a></div><div class="xrx"><span>2 sets</span><span>12-15 reps</span><span>1.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Behind body start, slight lean, pinky up at top</div><div class="swp"><b>Swap:</b> DB Lateral Raise</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e3"></div></div>
+  <div class="xc" data-d="1" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=cable+lateral+raise+form" target="_blank">Cable Lateral Raise</a></div><div class="xrx"><span>3 sets</span><span>12-15 reps</span><span>1.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Behind body start, slight lean, pinky up at top &mdash; this builds the cap</div><div class="swp"><b>Swap:</b> DB Lateral Raise</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e3"></div></div>
 
   <div class="xc" data-d="1" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=tricep+cable+pushdown+form" target="_blank">Cable Tricep Pushdown</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Elbows pinned, full extension, squeeze at bottom</div><div class="swp"><b>Swap:</b> Overhead Cable Extension</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e4"></div></div>
 
@@ -696,98 +576,61 @@
   <button class="dbtn" id="db4" onclick="dayDone(4)"><span class="ico">&#10003;</span> Mark Day Complete</button>
 </div>
 
-<!-- ============ FOOD LOG ============ -->
+<!-- ============ WEEKLY CHECK-IN ============ -->
 <div class="sec" id="s5">
   <div class="food-hdr">
-    <h2>What did you eat today?</h2>
-    <p>Search a food, tap to add it, or enter your own</p>
+    <h2>Weekly Check-In</h2>
+    <p>Log your weight, get your macro targets, track the trend</p>
   </div>
 
-  <div class="macros">
-    <div class="mc c"><div class="v" id="tc">0</div><div class="l">Calories</div></div>
-    <div class="mc p"><div class="v" id="tp">0g</div><div class="l">Protein</div></div>
-    <div class="mc cb"><div class="v" id="tcb">0g</div><div class="l">Carbs</div></div>
-    <div class="mc f"><div class="v" id="tf">0g</div><div class="l">Fat</div></div>
-  </div>
-
-  <div class="meal-tabs" id="mealTabs">
-    <div class="meal-tab on" onclick="mealTab(0)"><span class="mt-ico">&#9749;</span>Breakfast <span class="mt-ct" id="mc0">0</span></div>
-    <div class="meal-tab" onclick="mealTab(1)"><span class="mt-ico">&#9728;</span>Lunch <span class="mt-ct" id="mc1">0</span></div>
-    <div class="meal-tab" onclick="mealTab(2)"><span class="mt-ico">&#9789;</span>Dinner <span class="mt-ct" id="mc2">0</span></div>
-    <div class="meal-tab" onclick="mealTab(3)"><span class="mt-ico">&#10026;</span>Snacks <span class="mt-ct" id="mc3">0</span></div>
-  </div>
-
-  <div class="snap-area">
-    <input type="file" accept="image/*" capture="environment" id="camIn" style="display:none" onchange="handleSnap(this)">
-    <button class="snap-btn" onclick="document.getElementById('camIn').click()">&#128247; Snap a Photo of Your Meal</button>
-    <div class="snap-preview" id="snapPrev">
-      <img id="snapImg" src="" alt="Food photo">
-      <div class="snap-hint">Photo attached! Now search or add the food below.</div>
-      <div class="snap-desc">Your photo will be saved with the next item you log</div>
-      <button class="snap-cancel" onclick="clearSnap()">Remove Photo</button>
+  <!-- Weigh-in -->
+  <div class="ci-card">
+    <div class="ci-label">This Week's Weigh-In</div>
+    <div class="ci-row">
+      <input class="ci-inp" type="number" inputmode="decimal" id="ciWeight" placeholder="197" step="0.1">
+      <span class="ci-unit">lbs</span>
+      <button class="ci-save" id="ciSaveBtn" onclick="saveWeight()">Save</button>
+    </div>
+    <div class="ci-waist-row">
+      <span class="ci-waist-label">Waist (optional)</span>
+      <input class="ci-inp ci-waist" type="number" inputmode="decimal" id="ciWaist" placeholder="—" step="0.1">
+      <span class="ci-unit">in</span>
     </div>
   </div>
 
-  <div class="fsrch">
-    <span class="si">&#128269;</span>
-    <input type="text" id="fIn" placeholder="Search... chicken, rice, steak" autocomplete="off">
-    <div class="fsug" id="fSug"></div>
-  </div>
-
-  <div class="serve" id="serveAdj">
-    <div class="serve-name" id="serveName"></div>
-    <div class="serve-row">
-      <button class="serve-btn" onclick="adjServe(-1)">&minus;</button>
-      <input class="serve-inp" type="number" inputmode="decimal" id="serveAmt" value="1" oninput="updServe()">
-      <span class="serve-unit" id="serveUnit">oz</span>
-      <button class="serve-btn" onclick="adjServe(1)">+</button>
+  <!-- Macro targets -->
+  <div class="ci-card" id="macroCard">
+    <div class="ci-label">Your Macro Targets</div>
+    <div class="ci-phase" id="ciPhase"></div>
+    <div class="macros">
+      <div class="mc c"><div class="v" id="ciCal">—</div><div class="l">Calories</div></div>
+      <div class="mc p"><div class="v" id="ciPro">—</div><div class="l">Protein</div></div>
+      <div class="mc cb"><div class="v" id="ciCarb">—</div><div class="l">Carbs</div></div>
+      <div class="mc f"><div class="v" id="ciFat">—</div><div class="l">Fat</div></div>
     </div>
-    <div class="serve-macros" id="serveMacros"></div>
-    <div class="serve-btns">
-      <button class="serve-add" onclick="confirmServe()">Add to Log</button>
-      <button class="serve-cancel" onclick="cancelServe()">Cancel</button>
-    </div>
+    <div class="ci-breakdown" id="ciBreakdown"></div>
   </div>
 
-  <div class="qa-label">Quick Add</div>
-  <div class="qa-grid" id="qaGrid">
-    <button class="qa" onclick="openServe(0)">Chicken Breast</button>
-    <button class="qa" onclick="openServe(34)">Steak (sirloin)</button>
-    <button class="qa" onclick="openServe(5)">Eggs</button>
-    <button class="qa" onclick="openServe(9)">Protein Shake</button>
-    <button class="qa" onclick="openServe(11)">White Rice</button>
-    <button class="qa" onclick="openServe(13)">Sweet Potato</button>
-    <button class="qa" onclick="openServe(19)">Banana</button>
-    <button class="qa" onclick="openServe(35)">Tuna</button>
+  <!-- Coaching note -->
+  <div class="ci-card ci-coach" id="ciCoachCard">
+    <div class="ci-label">Coach's Note</div>
+    <div class="ci-coach-text" id="ciCoachText"></div>
   </div>
 
-  <button class="cf-toggle" onclick="document.getElementById('cfForm').classList.toggle('show')">+ Add something not listed</button>
-
-  <div class="cf-form" id="cfForm">
-    <h3>Add Custom Food</h3>
-    <div class="cfr w"><div class="cff"><label>What did you eat?</label><input id="cfN" placeholder="e.g. Chipotle Steak Bowl"></div></div>
-    <div class="cfr"><div class="cff"><label>Calories</label><input type="number" id="cfC" placeholder="0"></div><div class="cff"><label>Protein (g)</label><input type="number" id="cfP" placeholder="0"></div></div>
-    <div class="cfr"><div class="cff"><label>Carbs (g)</label><input type="number" id="cfCb" placeholder="0"></div><div class="cff"><label>Fat (g)</label><input type="number" id="cfF" placeholder="0"></div></div>
-    <button class="cf-add" onclick="addCF()">Add to Log</button>
+  <!-- Weight trend -->
+  <div class="ci-card">
+    <div class="ci-label">Weight Trend</div>
+    <div class="ci-trend" id="ciTrend"></div>
   </div>
-
-  <div class="flog" id="fLog"></div>
-
-  <button class="rst" onclick="clrFood()">Clear Today's Food Log</button>
 </div>
 
 <button class="rst" id="mainRst" onclick="rstWk()">Reset This Week</button>
-
-<div class="photo-modal" id="photoModal" onclick="closePhoto()">
-  <div class="photo-modal-close" onclick="closePhoto()">&times;</div>
-  <img id="photoModalImg" src="" alt="Food photo">
-</div>
 
 <div class="ftr">Self-programmed by <span class="br">Jonny Valdez</span> &mdash; Domain Athletics, Folsom</div>
 
 <script>
 (function(){
-var SK='jonny-v1',wk=1,st=ld(),curMeal=0;
+var SK='jonny-v1',wk=1,st=ld();
 
 // Theme toggle
 var isDark=st._theme==='dark';
@@ -814,46 +657,99 @@ window.toggleWU=function(hdr){
   chev.classList.toggle('open');
 };
 
-// Photo capture
-var pendingPhoto=null;
+// ===== CHECK-IN =====
+// Macro multipliers by phase (calories per lb bodyweight)
+var MACRO_PHASES=[
+  {wks:[1,2,3],mult:14,note:'<b>Build Phase</b> — Slight deficit (BW &times; 14). Dial in your protein target every single day. Don\'t chase the scale yet — your body is adapting to the new stimulus. If you\'re hitting 190g+ protein and training hard, trust the process.',cls:'build'},
+  {wks:[4],mult:15,note:'<b>Deload Week</b> — Eat closer to maintenance (BW &times; 15). Your body repairs and grows during recovery, not during training. Extra carbs this week = better performance when you ramp back up.',cls:'deload-phase'},
+  {wks:[5,6,7],mult:13,note:'<b>Push Phase</b> — Moderate deficit (BW &times; 13). This is where the fat starts coming off. Protein stays high, carbs come down slightly. Time your carbs around training — biggest meal post-workout. If energy tanks, bump carbs by 25g on training days.',cls:'push'},
+  {wks:[8],mult:15,note:'<b>Deload Week</b> — Back to maintenance (BW &times; 15). You\'ve been in a deficit for 3 weeks. This refeed primes your metabolism and restores glycogen. You might look fuller this week — that\'s the carbs, not fat.',cls:'deload-phase'},
+  {wks:[9,10,11],mult:12.5,note:'<b>Peak Phase</b> — Tightest deficit (BW &times; 12.5). This is the final push. You\'re at your strongest, loads are heaviest, and the deficit is doing its job. Protein is non-negotiable. If you\'re under 190g protein on any day, that\'s the #1 thing to fix.',cls:'peak'},
+  {wks:[12],mult:14,note:'<b>Deload &amp; Taper</b> — Ease back up (BW &times; 14). Light training, moderate food. Let your body fill out before summer. You did the work — this week is about looking your best, not losing more.',cls:'deload-phase'},
+];
 
-window.handleSnap=function(input){
-  var file=input.files[0];
-  if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(e){
-    var img=new Image();
-    img.onload=function(){
-      var canvas=document.createElement('canvas');
-      var MAX=200;
-      var w=img.width,h=img.height;
-      if(w>h){h=Math.round(h*(MAX/w));w=MAX}else{w=Math.round(w*(MAX/h));h=MAX}
-      canvas.width=w;canvas.height=h;
-      canvas.getContext('2d').drawImage(img,0,0,w,h);
-      pendingPhoto=canvas.toDataURL('image/jpeg',0.5);
-      document.getElementById('snapImg').src=pendingPhoto;
-      document.getElementById('snapPrev').classList.add('show');
-    };
-    img.src=e.target.result;
-  };
-  reader.readAsDataURL(file);
-  input.value='';
+function getMacroPhase(){
+  for(var i=0;i<MACRO_PHASES.length;i++){if(MACRO_PHASES[i].wks.indexOf(wk)>-1)return MACRO_PHASES[i]}
+  return MACRO_PHASES[0];
+}
+
+function calcMacros(bw){
+  var ph=getMacroPhase();
+  var cal=Math.round(bw*ph.mult);
+  var pro=Math.round(bw); // 1g/lb
+  var fat=Math.round(bw*0.35); // 0.35g/lb
+  var carb=Math.round((cal-pro*4-fat*9)/4);
+  if(carb<0)carb=0;
+  return{cal:cal,pro:pro,carb:carb,fat:fat,mult:ph.mult,note:ph.note,cls:ph.cls};
+}
+
+window.saveWeight=function(){
+  var w=parseFloat(document.getElementById('ciWeight').value);
+  if(!w||w<100||w>400)return;
+  var waist=parseFloat(document.getElementById('ciWaist').value)||0;
+  st['ci_w'+wk]=w;
+  if(waist)st['ci_waist'+wk]=waist;
+  sv();
+  var btn=document.getElementById('ciSaveBtn');
+  btn.textContent='Saved';btn.classList.add('saved');
+  setTimeout(function(){btn.textContent='Save';btn.classList.remove('saved')},1500);
+  renderCheckIn();
 };
 
-window.clearSnap=function(){
-  pendingPhoto=null;
-  document.getElementById('snapPrev').classList.remove('show');
-  document.getElementById('snapImg').src='';
-};
+function renderCheckIn(){
+  // Get current weight — use this week's, or find most recent
+  var bw=0;
+  for(var w2=wk;w2>=1;w2--){if(st['ci_w'+w2]){bw=st['ci_w'+w2];break}}
+  if(!bw)bw=197; // default starting weight
 
-window.showPhoto=function(src){
-  document.getElementById('photoModalImg').src=src;
-  document.getElementById('photoModal').classList.add('show');
-};
+  // Populate weight input if saved
+  var savedW=st['ci_w'+wk];
+  var savedWaist=st['ci_waist'+wk];
+  document.getElementById('ciWeight').value=savedW||'';
+  document.getElementById('ciWaist').value=savedWaist||'';
 
-window.closePhoto=function(){
-  document.getElementById('photoModal').classList.remove('show');
-};
+  // Calculate macros
+  var m=calcMacros(bw);
+  document.getElementById('ciCal').textContent=m.cal;
+  document.getElementById('ciPro').textContent=m.pro+'g';
+  document.getElementById('ciCarb').textContent=m.carb+'g';
+  document.getElementById('ciFat').textContent=m.fat+'g';
+
+  // Phase badge
+  var phEl=document.getElementById('ciPhase');
+  phEl.className='ci-phase '+m.cls;
+  phEl.innerHTML=getMacroPhase().wks.length>1?getPhase().name:getPhase().name;
+
+  // Breakdown
+  document.getElementById('ciBreakdown').innerHTML=
+    '<b>Based on '+bw+' lbs</b> &mdash; BW &times; '+m.mult+' = '+m.cal+' cal<br>'+
+    'Protein: '+m.pro+'g (1g/lb) &bull; Fat: '+m.fat+'g (0.35g/lb) &bull; Carbs: '+m.carb+'g (remaining)';
+
+  // Coach note
+  document.getElementById('ciCoachText').innerHTML=m.note;
+
+  // Weight trend
+  var trendEl=document.getElementById('ciTrend');
+  var rows=[];
+  var firstW=0;
+  for(var tw=1;tw<=12;tw++){
+    var val=st['ci_w'+tw];
+    var waistVal=st['ci_waist'+tw];
+    if(!val&&tw>wk)continue; // don't show future empty weeks
+    var delta='';
+    if(val&&firstW){
+      var diff=parseFloat((val-firstW).toFixed(1));
+      if(diff<0)delta='<span class="ci-trend-delta down">'+diff+' lbs</span>';
+      else if(diff>0)delta='<span class="ci-trend-delta up">+'+diff+' lbs</span>';
+      else delta='<span class="ci-trend-delta flat">0</span>';
+    }
+    if(val&&!firstW)firstW=val;
+    var waistStr=waistVal?'<span class="ci-trend-waist">&bull; '+waistVal+'" waist</span>':'';
+    var isCur=tw===wk?' style="color:var(--accent-bright)"':'';
+    rows.push('<div class="ci-trend-row"><span class="ci-trend-wk"'+(tw===wk?' style="color:var(--accent);font-weight:700"':'')+'>Wk '+tw+'</span><span class="ci-trend-val"'+(val?isCur:' style="color:var(--text-muted)"')+'>'+(val?val+' lbs':'—')+'</span>'+waistStr+delta+'</div>');
+  }
+  trendEl.innerHTML=rows.length?rows.join(''):'<div class="ci-trend-empty">Log your first weigh-in above to start tracking</div>';
+}
 
 // Deload weeks: 4, 8, 12
 var DELOAD_WEEKS=[4,8,12];
@@ -874,50 +770,7 @@ function getPhase(){
   return PHASES[0];
 }
 
-var FOODS=[
-  {n:"Chicken Breast",u:"oz",s:6,c:280,p:52,cb:0,f:6},
-  {n:"Ground Beef 90/10",u:"oz",s:4,c:200,p:22,cb:0,f:11},
-  {n:"Ground Turkey",u:"oz",s:4,c:170,p:21,cb:0,f:9},
-  {n:"Salmon Fillet",u:"oz",s:6,c:350,p:34,cb:0,f:22},
-  {n:"Shrimp",u:"oz",s:6,c:170,p:36,cb:1,f:2},
-  {n:"Eggs",u:"eggs",s:2,c:140,p:12,cb:1,f:10},
-  {n:"Egg Whites",u:"whites",s:4,c:68,p:14,cb:1,f:0},
-  {n:"Greek Yogurt",u:"cup",s:1,c:130,p:22,cb:8,f:0},
-  {n:"Cottage Cheese",u:"cup",s:1,c:180,p:24,cb:8,f:5},
-  {n:"Protein Shake",u:"scoop",s:1,c:120,p:24,cb:3,f:1},
-  {n:"Protein Bar",u:"bar",s:1,c:220,p:20,cb:24,f:8},
-  {n:"White Rice",u:"cup",s:1,c:200,p:4,cb:44,f:0},
-  {n:"Brown Rice",u:"cup",s:1,c:215,p:5,cb:45,f:2},
-  {n:"Sweet Potato",u:"medium",s:1,c:110,p:2,cb:26,f:0},
-  {n:"Oatmeal",u:"cup",s:0.5,c:150,p:5,cb:27,f:3},
-  {n:"Whole Wheat Bread",u:"slices",s:2,c:160,p:8,cb:28,f:2},
-  {n:"Pasta",u:"cup",s:1,c:200,p:7,cb:40,f:1},
-  {n:"Tortilla (flour)",u:"large",s:1,c:210,p:5,cb:36,f:5},
-  {n:"Rice Cakes",u:"cakes",s:2,c:70,p:1,cb:15,f:0},
-  {n:"Banana",u:"banana",s:1,c:105,p:1,cb:27,f:0},
-  {n:"Apple",u:"apple",s:1,c:95,p:0,cb:25,f:0},
-  {n:"Blueberries",u:"cup",s:1,c:85,p:1,cb:21,f:0},
-  {n:"Strawberries",u:"cup",s:1,c:50,p:1,cb:12,f:0},
-  {n:"Avocado",u:"half",s:1,c:120,p:1,cb:6,f:11},
-  {n:"Broccoli",u:"cup",s:1,c:55,p:4,cb:11,f:0},
-  {n:"Spinach",u:"cups",s:2,c:14,p:2,cb:2,f:0},
-  {n:"Mixed Salad",u:"cup",s:1,c:20,p:2,cb:3,f:0},
-  {n:"Almonds",u:"oz",s:1,c:160,p:6,cb:6,f:14},
-  {n:"Peanut Butter",u:"tbsp",s:2,c:190,p:7,cb:7,f:16},
-  {n:"Olive Oil",u:"tbsp",s:1,c:120,p:0,cb:0,f:14},
-  {n:"Cheese (cheddar)",u:"oz",s:1,c:110,p:7,cb:0,f:9},
-  {n:"Meatballs (beef)",u:"meatballs",s:4,c:280,p:24,cb:8,f:16},
-  {n:"Turkey Meatballs",u:"meatballs",s:4,c:220,p:24,cb:6,f:10},
-  {n:"Chicken Teriyaki",u:"oz",s:6,c:320,p:40,cb:16,f:8},
-  {n:"Steak (sirloin)",u:"oz",s:6,c:310,p:46,cb:0,f:12},
-  {n:"Tuna",u:"can",s:1,c:120,p:27,cb:0,f:1},
-  {n:"Black Beans",u:"cup",s:0.5,c:115,p:8,cb:20,f:0},
-  {n:"Hummus",u:"tbsp",s:2,c:70,p:2,cb:6,f:5},
-  {n:"Chipotle Bowl",u:"bowl",s:1,c:665,p:45,cb:72,f:18},
-  {n:"Acai Bowl",u:"bowl",s:1,c:450,p:8,cb:68,f:16},
-  {n:"Coffee + Cream",u:"cup",s:1,c:50,p:1,cb:1,f:5},
-  {n:"Almond Milk",u:"cup",s:1,c:30,p:1,cb:1,f:2},
-];
+// (Food tracker removed — using Cronometer for food logging)
 
 function ld(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
 function sv(){try{localStorage.setItem(SK,JSON.stringify(st))}catch(e){}}
@@ -1041,133 +894,12 @@ function restore(){
     var on=st[wkey('ck_d'+c.dataset.d+'e'+c.dataset.i)]||false;
     c.querySelector('.xck').classList.toggle('on',on);c.classList.toggle('ok',on);
   });
-  for(var d=0;d<5;d++)updProg(d);updDone();updNav();updPhase();updHints();renderFood();
+  for(var d=0;d<5;d++)updProg(d);updDone();updNav();updPhase();updHints();renderCheckIn();
 }
 
 window.rstWk=function(){if(!confirm('Reset all tracking for Week '+wk+'?'))return;var p='w'+wk+'_';Object.keys(st).forEach(function(k){if(k.indexOf(p)===0)delete st[k]});sv();restore()};
 
-// ===== FOOD =====
-window.mealTab=function(i){
-  curMeal=i;
-  document.querySelectorAll('.meal-tab').forEach(function(t,j){t.classList.toggle('on',j===i)});
-  renderFood();
-};
-
-var fIn=document.getElementById('fIn'),fSug=document.getElementById('fSug');
-
-fIn.addEventListener('input',function(){
-  var q=this.value.toLowerCase().trim();
-  if(q.length<2){fSug.classList.remove('show');return}
-  var m=FOODS.map(function(f,i){return{f:f,i:i}}).filter(function(o){return o.f.n.toLowerCase().indexOf(q)>-1}).slice(0,6);
-  if(!m.length){fSug.innerHTML='<div class="fsi"><div class="fsi-n" style="color:var(--text-muted)">No matches — try "Add something not listed" below</div></div>';fSug.classList.add('show');return}
-  fSug.innerHTML=m.map(function(o){
-    var f=o.f;
-    return'<div class="fsi" onclick="openServe('+o.i+')"><div class="fsi-n">'+f.n+'</div><div class="fsi-m"><span class="hi">'+f.c+' cal</span> per '+f.s+' '+f.u+' <span>'+f.p+'g P</span><span>'+f.cb+'g C</span><span>'+f.f+'g F</span></div></div>';
-  }).join('');
-  fSug.classList.add('show');
-});
-
-fIn.addEventListener('blur',function(){setTimeout(function(){fSug.classList.remove('show')},200)});
-
-// Serving adjuster
-var pendServe=null;
-
-window.openServe=function(i){
-  var f=FOODS[i];if(!f)return;
-  pendServe={i:i,amt:f.s};
-  document.getElementById('serveName').textContent=f.n;
-  document.getElementById('serveAmt').value=f.s;
-  document.getElementById('serveUnit').textContent=f.u;
-  updServe();
-  document.getElementById('serveAdj').classList.add('show');
-  fSug.classList.remove('show');fIn.value='';
-};
-
-window.adjServe=function(dir){
-  if(!pendServe)return;
-  var f=FOODS[pendServe.i],inp=document.getElementById('serveAmt');
-  var step=(['cup','cups','tbsp','half'].indexOf(f.u)>-1)?0.25:1;
-  var v=Math.max(step,parseFloat(inp.value||0)+dir*step);
-  inp.value=parseFloat(v.toFixed(2));
-  updServe();
-};
-
-window.updServe=function(){
-  if(!pendServe)return;
-  var f=FOODS[pendServe.i];
-  var amt=parseFloat(document.getElementById('serveAmt').value)||0;
-  var r=f.s?amt/f.s:1;
-  pendServe.amt=amt;
-  document.getElementById('serveMacros').innerHTML=
-    '<span class="hi">'+Math.round(f.c*r)+' cal</span><span>'+Math.round(f.p*r)+'g P</span><span>'+Math.round(f.cb*r)+'g C</span><span>'+Math.round(f.f*r)+'g F</span>';
-};
-
-window.confirmServe=function(){
-  if(!pendServe)return;
-  var f=FOODS[pendServe.i],amt=pendServe.amt;
-  var r=f.s?amt/f.s:1;
-  addToLog({
-    n:f.n+' ('+amt+' '+f.u+')',
-    c:Math.round(f.c*r),p:Math.round(f.p*r),
-    cb:Math.round(f.cb*r),f:Math.round(f.f*r),
-    meal:curMeal
-  });
-  cancelServe();
-};
-
-window.cancelServe=function(){
-  pendServe=null;
-  document.getElementById('serveAdj').classList.remove('show');
-};
-
-window.addCF=function(){
-  var n=document.getElementById('cfN').value.trim();
-  if(!n)return;
-  var c=+document.getElementById('cfC').value||0,p=+document.getElementById('cfP').value||0;
-  var cb=+document.getElementById('cfCb').value||0,f=+document.getElementById('cfF').value||0;
-  addToLog({n:n,c:c,p:p,cb:cb,f:f,meal:curMeal});
-  ['cfN','cfC','cfP','cfCb','cfF'].forEach(function(id){document.getElementById(id).value=''});
-  document.getElementById('cfForm').classList.remove('show');
-};
-
-function addToLog(item){
-  if(pendingPhoto){item.photo=pendingPhoto;clearSnap()}
-  var log=getLog();log.push(item);st[wkey('fl')]=JSON.stringify(log);sv();renderFood();
-}
-function getLog(){try{return JSON.parse(st[wkey('fl')]||'[]')}catch(e){return[]}}
-
-window.rmFood=function(i){var log=getLog();log.splice(i,1);st[wkey('fl')]=JSON.stringify(log);sv();renderFood()};
-window.clrFood=function(){if(!confirm('Clear all food for today?'))return;delete st[wkey('fl')];sv();renderFood()};
-
-var mealColors=['var(--gold)','var(--accent)','var(--lilac)','var(--mint)'];
-var mealNames=['Breakfast','Lunch','Dinner','Snacks'];
-
-function renderFood(){
-  var log=getLog();
-  var tC=0,tP=0,tCb=0,tF=0;
-  var counts=[0,0,0,0];
-  log.forEach(function(f){tC+=f.c;tP+=f.p;tCb+=f.cb;tF+=f.f;counts[f.meal||0]++});
-
-  document.getElementById('tc').textContent=tC;
-  document.getElementById('tp').textContent=tP+'g';
-  document.getElementById('tcb').textContent=tCb+'g';
-  document.getElementById('tf').textContent=tF+'g';
-
-  for(var m=0;m<4;m++)document.getElementById('mc'+m).textContent=counts[m];
-
-  var mealItems=log.map(function(f,i){return{item:f,idx:i}}).filter(function(o){return(o.item.meal||0)===curMeal});
-
-  var el=document.getElementById('fLog');
-  if(!mealItems.length){
-    el.innerHTML='<div class="flog-empty"><span class="fle-ico">&#127869;</span>No '+mealNames[curMeal].toLowerCase()+' logged yet<br><small>Search above or tap Quick Add</small></div>';
-    return;
-  }
-
-  el.innerHTML=mealItems.map(function(o){
-    var thumb=o.item.photo?'<img class="fle-thumb" src="'+o.item.photo+'" onclick="showPhoto(\''+o.item.photo.replace(/'/g,"\\'")+'\')" alt="photo">':'<div class="fle-dot" style="background:'+mealColors[curMeal]+'"></div>';
-    return'<div class="fle">'+thumb+'<div class="fle-info"><div class="fle-name">'+o.item.n+'</div><div class="fle-macros">'+o.item.p+'g P &bull; '+o.item.cb+'g C &bull; '+o.item.f+'g F</div></div><div class="fle-cal">'+o.item.c+'</div><div class="fle-rm" onclick="rmFood('+o.idx+')">&times;</div></div>';
-  }).join('');
-}
+// (Food functions removed — using Cronometer)
 
 // Generate per-set tracking inputs for ALL 5 days (Days 1-5 all use weight tracking)
 document.querySelectorAll('.xc').forEach(function(card){

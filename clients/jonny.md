@@ -98,9 +98,9 @@
 | # | Exercise | Sets | Reps | Rest | Notes |
 |---|----------|------|------|------|-------|
 | 1 | DB Bench Press | 3 | 6–8 | 3 min | Shoulder-friendly, deep stretch at bottom, press up and in |
-| 2 | Incline DB Press | 3 | 8–10 | 2.5 min | 30° incline, deep stretch at bottom, press up and in |
+| 2 | Cable Fly (low-to-high) | 3 | 10–12 | 2 min | Stretched position, constant cable tension, squeeze at top — upper chest without another press |
 | 3 | Seated DB Shoulder Press | 3 | 8–10 | 2.5 min | Controlled path, don't lock out, feel the delts |
-| 4 | Cable Lateral Raise | 2 | 12–15 | 1.5 min | Behind body start, slight lean, pinky up at top |
+| 4 | Cable Lateral Raise | 3 | 12–15 | 1.5 min | Behind body start, slight lean, pinky up at top — builds the cap |
 | 5 | Cable Tricep Pushdown | 2 | 10–12 | 2 min | Elbows pinned, full extension, squeeze at bottom |
 
 **Total: 13 sets | ~40 min**
