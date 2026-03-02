@@ -87,7 +87,7 @@
 | 2 | Leg Press | 3 | 10–12 | 2.5 min | Feet mid-platform, full depth, don't lock knees |
 | 3 | Barbell RDL | 3 | 8–10 | 2.5 min | Push hips back, bar close to shins, feel the hamstring stretch |
 | 4 | Leg Extension | 2 | 12–15 | 2 min | Squeeze at top, 2 sec hold, slow negative |
-| 5 | Bulgarian Split Squat (DBs) | 2 | 8–10/side | 2.5 min | Front foot flat, slight forward lean, control descent — quad and glute killer |
+| 5 | Goblet Squat | 2 | 10–12 | 2 min | Elbows inside knees, upright torso, full depth — works anywhere with a DB |
 
 **Total: 13 sets | ~45 min**
 
@@ -113,7 +113,7 @@
 |---|----------|------|------|------|-------|
 | 1 | Trap Bar Deadlift | 3 | 5–6 | 3 min | Push the floor away, chest up, lock out with glutes |
 | 2 | Hip Thrust (barbell) | 3 | 8–10 | 2.5 min | Drive through heels, full extension, 2 sec squeeze |
-| 3 | Walking Lunge (DBs) | 3 | 10/side | 2.5 min | Long stride, front shin vertical, push through heel |
+| 3 | Bulgarian Split Squat (DBs) | 3 | 8–10/side | 2.5 min | Front foot flat, slight forward lean, control descent — quad and glute |
 | 4 | Lying Leg Curl | 2 | 10–12 | 2 min | Slow eccentric 3 sec, squeeze at top |
 | 5 | Adductor Machine | 2 | 12–15 | 1.5 min | Controlled squeeze, slow release |
 
