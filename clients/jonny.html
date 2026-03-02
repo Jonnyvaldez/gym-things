@@ -221,6 +221,11 @@
   .wu-name a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--border)}
   .wu-desc{font-size:.88em;color:var(--text-muted);margin-top:1px}
 
+  /* ---- CORE SECTION ---- */
+  .warmup.core{border-color:var(--mint-fill);margin-top:10px}
+  .warmup.core .warmup-hdr h3{color:var(--mint)}
+  .warmup.core .wu-num{background:var(--mint-soft);color:var(--mint)}
+
   /* ---- DONE BUTTON ---- */
   .dbtn{
     display:flex;align-items:center;justify-content:center;gap:8px;
@@ -501,9 +506,22 @@
 
   <div class="xc" data-d="0" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=barbell+rdl+form+tutorial" target="_blank">Barbell RDL</a></div><div class="xrx"><span>3 sets</span><span>8-10 reps</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Push hips back, bar close to shins, hamstring stretch</div><div class="swp"><b>Swap:</b> DB RDL</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e2"></div></div>
 
-  <div class="xc" data-d="0" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=leg+extension+form" target="_blank">Leg Extension</a></div><div class="xrx"><span>2 sets</span><span>12-15 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Squeeze at top, 2 sec hold, slow negative</div><div class="swp"><b>Swap:</b> Sissy Squat</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e3"></div></div>
+  <div class="xc" data-d="0" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=goblet+squat+dumbbell+form" target="_blank">Goblet Squat</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Elbows inside knees, upright torso, full depth — works anywhere with a DB</div><div class="swp"><b>Swap:</b> Leg Press (if available)</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e3"></div></div>
 
-  <div class="xc" data-d="0" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=goblet+squat+dumbbell+form" target="_blank">Goblet Squat</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Elbows inside knees, upright torso, full depth — works anywhere with a DB</div><div class="swp"><b>Swap:</b> Leg Press (if available)</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e4"></div></div>
+  <div class="xc" data-d="0" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=leg+extension+form" target="_blank">Leg Extension</a></div><div class="xrx"><span>2 sets</span><span>12-15 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Squeeze at top, 2 sec hold, slow negative — hypertrophy finisher</div><div class="swp"><b>Swap:</b> Sissy Squat</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e4"></div></div>
+
+  <div class="warmup core">
+    <div class="warmup-hdr" onclick="toggleWU(this)">
+      <h3>Core &mdash; 3 movements</h3>
+      <span class="warmup-time">~8 min</span>
+      <span class="warmup-chev">&#9660;</span>
+    </div>
+    <div class="warmup-body">
+      <div class="wu-item"><div class="wu-num">1</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=hanging+knee+raise+form" target="_blank">Hanging Knee Raise</a></div><div class="wu-desc">3 &times; 10-12 &mdash; Control the swing, curl hips up, slow lowering</div></div></div>
+      <div class="wu-item"><div class="wu-num">2</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=ab+wheel+rollout+form" target="_blank">Ab Wheel Rollout</a></div><div class="wu-desc">3 &times; 8-10 &mdash; Brace hard, extend as far as you can control, don't let hips sag</div></div></div>
+      <div class="wu-item"><div class="wu-num">3</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=pallof+press+cable+core" target="_blank">Pallof Press (cable)</a></div><div class="wu-desc">2 &times; 10/side &mdash; Anti-rotation &mdash; press out, hold 2 sec, resist the pull</div></div></div>
+    </div>
+  </div>
 
   <div class="nta"><label>Session Notes</label><textarea placeholder="How'd it feel today?" data-k="n0"></textarea></div>
   <button class="dbtn" id="db0" onclick="dayDone(0)"><span class="ico">&#10003;</span> Mark Day Complete</button>
@@ -577,6 +595,19 @@
 
   <div class="xc" data-d="2" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=hip+adductor+machine+form" target="_blank">Adductor Machine</a></div><div class="xrx"><span>2 sets</span><span>12-15 reps</span><span>1.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Controlled squeeze, slow release</div><div class="swp"><b>Swap:</b> Sumo Goblet Squat</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d2e4"></div></div>
 
+  <div class="warmup core">
+    <div class="warmup-hdr" onclick="toggleWU(this)">
+      <h3>Core &mdash; 3 movements</h3>
+      <span class="warmup-time">~8 min</span>
+      <span class="warmup-chev">&#9660;</span>
+    </div>
+    <div class="warmup-body">
+      <div class="wu-item"><div class="wu-num">1</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=hanging+leg+raise+form" target="_blank">Hanging Leg Raise</a></div><div class="wu-desc">3 &times; 8-10 &mdash; Straight legs, control the swing, curl hips at top</div></div></div>
+      <div class="wu-item"><div class="wu-num">2</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=kettlebell+windmill+form" target="_blank">Kettlebell Windmill</a></div><div class="wu-desc">2 &times; 6-8/side &mdash; Obliques + hip stability &mdash; slow and controlled, eyes on the bell</div></div></div>
+      <div class="wu-item"><div class="wu-num">3</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=plank+hold+proper+form" target="_blank">Plank Hold</a></div><div class="wu-desc">2 &times; 30-45 sec &mdash; Squeeze glutes, tuck ribs, breathe &mdash; no sagging</div></div></div>
+    </div>
+  </div>
+
   <div class="nta"><label>Session Notes</label><textarea placeholder="How'd it feel today?" data-k="n2"></textarea></div>
   <button class="dbtn" id="db2" onclick="dayDone(2)"><span class="ico">&#10003;</span> Mark Day Complete</button>
 </div>
@@ -647,6 +678,19 @@
   <div class="xc" data-d="4" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=overhead+cable+tricep+extension+form" target="_blank">Overhead Cable Extension</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Face away from cable, stretch the long head, elbows by ears</div><div class="swp"><b>Swap:</b> EZ Bar Skull Crusher</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e2"></div></div>
 
   <div class="xc" data-d="4" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=incline+dumbbell+curl+form" target="_blank">Incline DB Curl</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> 45&deg; bench, arms hang straight, full stretch at bottom &mdash; bicep peak</div><div class="swp"><b>Swap:</b> Cable Curl</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e3"></div></div>
+
+  <div class="warmup core">
+    <div class="warmup-hdr" onclick="toggleWU(this)">
+      <h3>Core &mdash; 3 movements</h3>
+      <span class="warmup-time">~8 min</span>
+      <span class="warmup-chev">&#9660;</span>
+    </div>
+    <div class="warmup-body">
+      <div class="wu-item"><div class="wu-num">1</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=hanging+knee+raise+form" target="_blank">Hanging Knee Raise</a></div><div class="wu-desc">3 &times; 10-12 &mdash; Curl hips up, control the swing, squeeze at top</div></div></div>
+      <div class="wu-item"><div class="wu-num">2</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=cable+woodchop+form+core" target="_blank">Cable Woodchop</a></div><div class="wu-desc">2 &times; 10-12/side &mdash; Rotational power &mdash; pivot the hips, arms stay extended</div></div></div>
+      <div class="wu-item"><div class="wu-num">3</div><div class="wu-info"><div class="wu-name"><a href="https://www.youtube.com/results?search_query=ab+wheel+rollout+form" target="_blank">Ab Wheel Rollout</a></div><div class="wu-desc">2 &times; 8-10 &mdash; Anti-extension &mdash; brace hard, don't let hips sag</div></div></div>
+    </div>
+  </div>
 
   <div class="nta"><label>Session Notes</label><textarea placeholder="How'd it feel today?" data-k="n4"></textarea></div>
   <button class="dbtn" id="db4" onclick="dayDone(4)"><span class="ico">&#10003;</span> Mark Day Complete</button>

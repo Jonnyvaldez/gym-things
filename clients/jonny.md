@@ -86,8 +86,8 @@
 | 1 | Hack Squat | 3 | 6–8 | 3 min | No shoulder load, go deep, drive through midfoot |
 | 2 | Leg Press | 3 | 10–12 | 2.5 min | Feet mid-platform, full depth, don't lock knees |
 | 3 | Barbell RDL | 3 | 8–10 | 2.5 min | Push hips back, bar close to shins, feel the hamstring stretch |
-| 4 | Leg Extension | 2 | 12–15 | 2 min | Squeeze at top, 2 sec hold, slow negative |
-| 5 | Goblet Squat | 2 | 10–12 | 2 min | Elbows inside knees, upright torso, full depth — works anywhere with a DB |
+| 4 | Goblet Squat | 2 | 10–12 | 2 min | Elbows inside knees, upright torso, full depth — works anywhere with a DB |
+| 5 | Leg Extension | 2 | 12–15 | 2 min | Squeeze at top, 2 sec hold, slow negative — hypertrophy finisher |
 
 **Total: 13 sets | ~45 min**
 
@@ -160,7 +160,33 @@
 | Shoulders | ~10 | 3x/week | Push + Pull + Day 5 |
 | Triceps | ~7 | 2x/week | Push + Day 5 |
 | Biceps | ~5 | 2x/week | Pull + Day 5 |
-| **Total** | **~55 sets** | | |
+| Core | ~16 | 3x/week | Day 1 + Day 3 + Day 5 (hanging raises, wheel, Pallof, windmill, woodchop, plank) |
+| **Total** | **~71 sets** | | |
+
+---
+
+## Core Work (3x/week — Days 1, 3, 5)
+
+### Day 1 Core (~8 min)
+| # | Exercise | Sets | Reps | Notes |
+|---|----------|------|------|-------|
+| 1 | Hanging Knee Raise | 3 | 10–12 | Control the swing, curl hips up, slow lowering |
+| 2 | Ab Wheel Rollout | 3 | 8–10 | Brace hard, extend as far as you control, no hip sag |
+| 3 | Pallof Press (cable) | 2 | 10/side | Anti-rotation — press out, hold 2 sec, resist the pull |
+
+### Day 3 Core (~8 min)
+| # | Exercise | Sets | Reps | Notes |
+|---|----------|------|------|-------|
+| 1 | Hanging Leg Raise | 3 | 8–10 | Straight legs, control swing, curl hips at top |
+| 2 | Kettlebell Windmill | 2 | 6–8/side | Obliques + hip stability — slow, eyes on the bell |
+| 3 | Plank Hold | 2 | 30–45 sec | Squeeze glutes, tuck ribs, breathe — no sagging |
+
+### Day 5 Core (~8 min)
+| # | Exercise | Sets | Reps | Notes |
+|---|----------|------|------|-------|
+| 1 | Hanging Knee Raise | 3 | 10–12 | Curl hips up, control swing, squeeze at top |
+| 2 | Cable Woodchop | 2 | 10–12/side | Rotational power — pivot hips, arms stay extended |
+| 3 | Ab Wheel Rollout | 2 | 8–10 | Anti-extension — brace hard, don't let hips sag |
 
 ---
 
