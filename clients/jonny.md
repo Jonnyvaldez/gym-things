@@ -83,11 +83,11 @@
 
 | # | Exercise | Sets | Reps | Rest | Notes |
 |---|----------|------|------|------|-------|
-| 1 | Hack Squat | 3 | 6–8 | 3 min | No shoulder load, go deep, drive through midfoot |
+| 1 | Hack Squat | 3 | 6–8 | 3 min | Go to parallel (~90° knee flexion) for max quad stimulus. No shoulder load. Drive through midfoot. |
 | 2 | Leg Press | 3 | 10–12 | 2.5 min | Feet mid-platform, full depth, don't lock knees |
 | 3 | Barbell RDL | 3 | 8–10 | 2.5 min | Push hips back, bar close to shins, feel the hamstring stretch |
-| 4 | Goblet Squat | 2 | 10–12 | 2 min | Elbows inside knees, upright torso, full depth — works anywhere with a DB |
-| 5 | Leg Extension | 2 | 12–15 | 2 min | Squeeze at top, 2 sec hold, slow negative — hypertrophy finisher |
+| 4 | Goblet Squat | 2 | 10–12 | 2 min | Elbows inside knees, upright torso, full depth. At Domain: use Pendulum Squat or Smith Squat for heavier loading. |
+| 5 | Leg Extension | 2 | 12–15 | 2 min | **LEAN BACK** on the pad (~40° hip angle) — trains rectus femoris at length. Squeeze at top, 2 sec hold, slow negative. Primary RF builder. |
 
 **Total: 13 sets | ~45 min**
 
@@ -97,11 +97,11 @@
 
 | # | Exercise | Sets | Reps | Rest | Notes |
 |---|----------|------|------|------|-------|
-| 1 | DB Bench Press | 3 | 6–8 | 3 min | Shoulder-friendly, deep stretch at bottom, press up and in |
-| 2 | Cable Fly (low-to-high) | 3 | 10–12 | 2 min | Stretched position, constant cable tension, squeeze at top — upper chest without another press |
-| 3 | Seated DB Shoulder Press | 3 | 8–10 | 2.5 min | Controlled path, don't lock out, feel the delts |
-| 4 | Cable Lateral Raise | 3 | 12–15 | 1.5 min | Behind body start, slight lean, pinky up at top — builds the cap |
-| 5 | Cable Tricep Pushdown | 2 | 10–12 | 2 min | Elbows pinned, full extension, squeeze at bottom |
+| 1 | DB Bench Press | 3 | 6–8 | 3 min | Deep stretch at bottom (lengthened bias). Press up and in. DBs go deeper than barbell — use it. |
+| 2 | Cable Fly (low-to-high) | 3 | 10–12 | 2 min | Pulleys at ANKLE height. Hands to forehead level (~30° up). Constant tension through the full arc — upper chest without another press. |
+| 3 | Seated DB Shoulder Press | 3 | 8–10 | 2.5 min | Pain-free range, controlled path, feel the delts |
+| 4 | Cable Lateral Raise | 3 | 12–15 | 1.5 min | Cable at HIP HEIGHT (not lowest). Cross behind body, lean away — peak tension at stretched position. Pinky up at top. |
+| 5 | Overhead Cable Extension | 2 | 10–12 | 2 min | Face away, stretch the long head fully, elbows by ears — 40% more tricep growth than pushdowns (lengthened bias). |
 
 **Total: 13 sets | ~40 min**
 
@@ -113,8 +113,8 @@
 |---|----------|------|------|------|-------|
 | 1 | Trap Bar Deadlift | 3 | 5–6 | 3 min | Push the floor away, chest up, lock out with glutes |
 | 2 | Hip Thrust (barbell) | 3 | 8–10 | 2.5 min | Drive through heels, full extension, 2 sec squeeze |
-| 3 | Bulgarian Split Squat (DBs) | 3 | 8–10/side | 2.5 min | Front foot flat, slight forward lean, control descent — quad and glute |
-| 4 | Lying Leg Curl | 2 | 10–12 | 2 min | Slow eccentric 3 sec, squeeze at top |
+| 3 | Bulgarian Split Squat (DBs) | 3 | 8–10/side | 2.5 min | Front foot flat, slight forward lean, control descent. Unilateral quad + glute with zero spinal load. |
+| 4 | Seated Leg Curl | 2 | 10–12 | 2 min | Hips flexed = hamstrings lengthened = ~50% more growth than lying. Slow eccentric 3 sec, squeeze at top. Swap: Lying Leg Curl. |
 | 5 | Adductor Machine | 2 | 12–15 | 1.5 min | Controlled squeeze, slow release |
 
 **Total: 13 sets | ~45 min**
@@ -140,9 +140,9 @@
 | # | Exercise | Sets | Reps | Rest | Notes |
 |---|----------|------|------|------|-------|
 | 1 | Machine Shoulder Press | 3 | 8–10 | 2.5 min | Guided path is safer for shoulder, full range |
-| 2 | Cable Lateral Raise | 3 | 12–15 | 1.5 min | Constant tension, slight lean, slow lowering — builds the cap |
-| 3 | Overhead Cable Extension | 3 | 10–12 | 2 min | Face away from cable, stretch the long head, elbows by ears |
-| 4 | Incline DB Curl | 3 | 10–12 | 2 min | 45° bench, arms hang straight, full stretch at bottom |
+| 2 | Cable Lateral Raise | 3 | 12–15 | 1.5 min | Cable at HIP HEIGHT. Cross behind body, lean away — constant tension at the stretched position. Builds the cap. |
+| 3 | Overhead Cable Extension | 3 | 10–12 | 2 min | Face away, full stretch overhead, elbows by ears. #1 tricep builder — 40% more growth than pushdowns. Go heavy here. |
+| 4 | Incline DB Curl | 3 | 10–12 | 2 min | 45° bench, arms hang back (shoulder extension = max long head stretch). Full range, no momentum. This builds the peak. |
 
 **Total: 12 sets | ~35 min**
 
@@ -158,7 +158,7 @@
 | Chest | ~8 | 2x/week | Upper Push + Day 5 (overhead press) |
 | Back | ~9 | 2x/week | Upper Pull + indirect |
 | Shoulders | ~10 | 3x/week | Push + Pull + Day 5 |
-| Triceps | ~7 | 2x/week | Push + Day 5 |
+| Triceps | ~8 | 2x/week | Push (overhead ext) + Day 5 (overhead ext) — both lengthened bias |
 | Biceps | ~5 | 2x/week | Pull + Day 5 |
 | Core | ~16 | 3x/week | Day 1 + Day 3 + Day 5 (hanging raises, wheel, Pallof, windmill, woodchop, plank) |
 | **Total** | **~71 sets** | | |
@@ -192,9 +192,28 @@
 
 ## Progression Notes
 
-- **Weeks 1–4:** Dial in working weights, prioritize form under heavy load. If hitting top of rep range on all sets, go up 5 lbs compounds / 2.5 lbs accessories.
-- **Weeks 5–8:** Push intensity. Add 1 set to compounds if recovery allows. Day 5 — add a 5th exercise (rear delt fly or hammer curl superset).
-- **Weeks 9–12:** Peak phase. Heaviest loads. Maintain accessories. Deload week 12 before summer.
+- **Weeks 1–3 (Build):** RPE 7–8, 2–3 RIR. Dial in working weights, prioritize form under heavy load. If hitting top of rep range on all sets, go up 5 lbs compounds / 2.5 lbs accessories. Cals: BW × 13.5 (~300 deficit).
+- **Week 4 (Deload):** RPE 5–6, ~60% of working weight. Eat at maintenance (BW × 14.5) for 5–7 days. Diet break restores glycogen and primes metabolism.
+- **Weeks 5–7 (Push):** RPE 8–9, 1–2 RIR. Push intensity. Add 1 set to compounds if recovery allows. Cals: BW × 12.5 (~500 deficit). Calorie cycle: +200 training / -200 rest.
+- **Week 8 (Deload):** RPE 5–6. Full diet break at maintenance (BW × 14.5).
+- **Weeks 9–11 (Peak):** RPE 9–10, 0–1 RIR. Heaviest loads. Take isolations to failure. Cals: BW × 12 (tightest deficit). Day 5 — add a 5th exercise (rear delt fly or hammer curl superset).
+- **Week 12 (Deload):** Light week. Eat at maintenance (BW × 14.5). You earned it.
+
+## Nutrition Protocol
+
+| Macro | Target | Rationale |
+|-------|--------|-----------|
+| Protein | 1.1g/lb (215–235g) | Helms/Aragon consensus for deficit — preserves muscle |
+| Fat | 0.3g/lb (59g) | Frees more carbs for training fuel |
+| Carbs | Fill remaining | Time around training — biggest meal post-workout |
+| Calorie Cycling | +200 training / -200 rest | Fuel performance on training days, deeper deficit on rest days |
+
+| Phase | Multiplier | Example @ 197 lbs |
+|-------|------------|-------------------|
+| Build (wk 1–3) | BW × 13.5 | ~2,660 cal/day |
+| Push (wk 5–7) | BW × 12.5 | ~2,463 cal/day |
+| Peak (wk 9–11) | BW × 12 | ~2,364 cal/day |
+| Deload (wk 4, 8, 12) | BW × 14.5 | ~2,857 cal/day |
 
 ---
 

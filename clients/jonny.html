@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131620" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Jonny">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='180' height='180' rx='40' fill='%234A7FB5'/%3E%3Ctext x='90' y='120' font-size='100' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='700'%3EJ%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='180' height='180' rx='40' fill='%234A7FB5'/%3E%3Ctext x='90' y='120' font-size='100' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='700'%3EJ%3C/text%3E%3C/svg%3E">
@@ -59,194 +61,231 @@
 
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
+  /* Buttery cubic-bezier for all transitions */
+  :root{--ease:cubic-bezier(.25,.46,.45,.94);--ease-out:cubic-bezier(.16,1,.3,1);--ease-spring:cubic-bezier(.34,1.56,.64,1)}
+
   body{
     font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
     background:var(--bg);color:var(--text);line-height:1.55;
     min-height:100dvh;padding-bottom:100px;-webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
+    -webkit-user-select:none;user-select:none;overscroll-behavior:none;
   }
+  input,textarea{-webkit-user-select:auto;user-select:auto;font-size:16px}
 
   /* ---- HEADER ---- */
   .hdr{
     background:linear-gradient(180deg,var(--hdr-grad) 0%,var(--bg) 100%);
-    padding:18px 16px 10px;text-align:center;
+    padding:20px 16px 10px;text-align:center;
     position:sticky;top:0;z-index:100;
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    transition:box-shadow .3s var(--ease);
   }
+  .hdr.scrolled{box-shadow:0 1px 0 var(--border)}
   .hdr-top{display:flex;align-items:center;justify-content:center;position:relative}
-  .hdr-coach{color:var(--accent);font-size:.58em;text-transform:uppercase;letter-spacing:2.5px;font-weight:600}
-  .hdr h1{font-size:1.2em;font-weight:700;margin:4px 0 2px;color:var(--text)}
+  .hdr-coach{color:var(--accent);font-size:.56em;text-transform:uppercase;letter-spacing:3px;font-weight:600}
+  .hdr h1{font-size:1.3em;font-weight:800;margin:4px 0 2px;color:var(--text);letter-spacing:-.02em}
   .hdr-sub{color:var(--text-muted);font-size:.72em}
   .theme-toggle{
     background:var(--surface);border:1px solid var(--border);
-    width:30px;height:30px;border-radius:50%;cursor:pointer;
+    width:32px;height:32px;border-radius:50%;cursor:pointer;
     font-size:.85em;display:flex;align-items:center;justify-content:center;
-    position:absolute;right:0;top:50%;transform:translateY(-50%);transition:all .2s;
+    position:absolute;right:0;top:50%;transform:translateY(-50%);
+    transition:all .3s var(--ease-spring);
   }
-  .theme-toggle:active{transform:translateY(-50%) scale(.9)}
+  .theme-toggle:active{transform:translateY(-50%) scale(.85)}
 
   /* ---- WEEK ---- */
-  .wk{display:flex;align-items:center;justify-content:center;gap:14px;padding:8px 16px}
+  .wk{display:flex;align-items:center;justify-content:center;gap:16px;padding:8px 16px}
   .wk-btn{
     background:var(--surface);border:1px solid var(--border);color:var(--text);
-    width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:1.1em;
+    width:36px;height:36px;border-radius:12px;cursor:pointer;font-size:1.15em;
     display:flex;align-items:center;justify-content:center;
+    transition:all .2s var(--ease-spring);
   }
-  .wk-lbl{font-size:.76em;font-weight:600;min-width:86px;text-align:center;color:var(--text-dim)}
+  .wk-btn:active{transform:scale(.88)}
+  .wk-lbl{font-size:.78em;font-weight:700;min-width:90px;text-align:center;color:var(--text-dim)}
 
   /* ---- NAV ---- */
-  .nav{display:flex;gap:5px;padding:0 12px 10px;overflow-x:auto;scrollbar-width:none}
+  .nav{display:flex;gap:6px;padding:0 12px 10px;overflow-x:auto;scrollbar-width:none}
   .nav::-webkit-scrollbar{display:none}
   .nav-t{
-    flex:1;min-width:0;padding:9px 6px;background:var(--surface);
-    border:1.5px solid var(--border);border-radius:18px;
+    flex:1;min-width:0;padding:10px 6px;background:var(--surface);
+    border:1.5px solid var(--border);border-radius:20px;
     color:var(--text-muted);font-size:.68em;font-weight:600;cursor:pointer;
-    transition:all .2s;text-align:center;white-space:nowrap;
+    transition:all .3s var(--ease-out);text-align:center;white-space:nowrap;
+    position:relative;overflow:hidden;
   }
-  .nav-t.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .nav-t::after{
+    content:'';position:absolute;inset:0;background:var(--accent);
+    opacity:0;transition:opacity .3s var(--ease-out);border-radius:inherit;
+  }
+  .nav-t.on{background:var(--accent);border-color:var(--accent);color:#fff;transform:scale(1.02)}
+  .nav-t:active{transform:scale(.95)}
   .nav-t.done-day{background:var(--mint-fill);border-color:var(--mint);color:var(--mint)}
   .nav-t.done-day.on{background:var(--mint);color:var(--bg)}
   .nav-t.food{border-color:var(--accent);color:var(--accent-bright)}
   .nav-t.food.on{background:var(--accent);border-color:var(--accent);color:#fff}
 
   /* ---- SECTION ---- */
-  .sec{display:none;padding:0 12px}
+  .sec{display:none;padding:0 12px;animation:fadeIn .35s var(--ease-out)}
   .sec.on{display:block}
-  .sec-title{font-size:1.05em;font-weight:700;margin-bottom:2px}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .sec-title{font-size:1.1em;font-weight:800;margin-bottom:2px;letter-spacing:-.02em}
   .sec-meta{color:var(--text-muted);font-size:.72em;margin-bottom:10px}
 
   /* ---- PROGRESS ---- */
-  .prog{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-  .prog-bar{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
-  .prog-fill{height:100%;background:var(--mint);border-radius:2px;transition:width .3s;width:0%}
-  .prog-lbl{font-size:.65em;color:var(--text-muted);white-space:nowrap}
+  .prog{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .prog-bar{flex:1;height:4px;background:var(--border);border-radius:3px;overflow:hidden}
+  .prog-fill{height:100%;background:linear-gradient(90deg,var(--mint),#5dc49a);border-radius:3px;transition:width .5s var(--ease-out);width:0%}
+  .prog-lbl{font-size:.65em;color:var(--text-muted);white-space:nowrap;font-weight:600}
 
   /* ---- EXERCISE CARD ---- */
   .xc{
     background:var(--surface);border:1.5px solid var(--border);
-    border-radius:var(--radius);margin-bottom:8px;overflow:hidden;transition:all .2s;
+    border-radius:var(--radius);margin-bottom:8px;overflow:hidden;
+    transition:all .3s var(--ease-out);
+    box-shadow:0 1px 3px rgba(0,0,0,.04);
   }
-  .xc.ok{border-color:var(--mint);background:var(--mint-soft)}
-  .xr{display:flex;align-items:center;padding:12px 14px;gap:12px;min-height:50px}
+  .xc.ok{border-color:var(--mint);background:var(--mint-soft);box-shadow:0 0 0 1px var(--mint),0 2px 8px rgba(61,168,122,.1)}
+  .xr{display:flex;align-items:center;padding:14px 14px;gap:12px;min-height:54px}
   .xck{
-    flex-shrink:0;width:26px;height:26px;border-radius:50%;
-    border:2px solid var(--border);display:flex;align-items:center;justify-content:center;
-    cursor:pointer;transition:all .2s;font-size:13px;
+    flex-shrink:0;width:28px;height:28px;border-radius:50%;
+    border:2.5px solid var(--border);display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:all .25s var(--ease-spring);font-size:13px;
   }
-  .xck.on{background:var(--mint);border-color:var(--mint);color:var(--check-text)}
-  .xck.on::after{content:'\2713';font-weight:700}
+  .xck:active{transform:scale(.85)}
+  .xck.on{background:var(--mint);border-color:var(--mint);color:var(--check-text);transform:scale(1.1)}
+  .xck.on::after{content:'\2713';font-weight:700;animation:checkPop .3s var(--ease-spring)}
+  @keyframes checkPop{0%{transform:scale(0) rotate(-45deg)}60%{transform:scale(1.3) rotate(5deg)}100%{transform:scale(1) rotate(0)}}
   .xb{flex:1;min-width:0}
-  .xn{font-weight:600;font-size:.82em;line-height:1.3}
-  .xn a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--text-muted)}
+  .xn{font-weight:700;font-size:.84em;line-height:1.3}
+  .xn a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--text-muted);transition:color .15s}
   .xn a:active{color:var(--accent)}
   .xrx{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
-  .xrx span{font-size:.64em;color:var(--text-dim);background:var(--bg);padding:2px 6px;border-radius:5px}
+  .xrx span{font-size:.64em;color:var(--text-dim);background:var(--bg);padding:3px 8px;border-radius:6px;font-weight:500}
   .xd{padding:0 14px 10px 14px}
   .cue{
     font-size:.72em;color:var(--gold);background:var(--gold-soft);
-    padding:6px 10px;border-radius:var(--radius-sm);margin-bottom:5px;line-height:1.4;
+    padding:8px 12px;border-radius:var(--radius-sm);margin-bottom:6px;line-height:1.5;
+    border-left:3px solid var(--gold);
   }
   .cue b{font-weight:700}
-  .swp{font-size:.66em;color:var(--text-muted);background:var(--bg);padding:5px 10px;border-radius:var(--radius-sm)}
+  .swp{font-size:.66em;color:var(--text-muted);background:var(--bg);padding:6px 10px;border-radius:var(--radius-sm)}
   .swp b{color:var(--accent);font-weight:600}
   .linp{
     width:100%;background:var(--bg);border:1px solid var(--border);
     border-radius:var(--radius-sm);padding:8px 10px;color:var(--text);
     font-size:.76em;font-family:inherit;outline:none;margin-top:6px;
+    transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
   }
-  .linp:focus{border-color:var(--accent)}
+  .linp:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
   .linp::placeholder{color:var(--text-muted)}
 
   /* ---- SET TRACKING ---- */
   .set-rows{padding:0}
-  .set-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
-  .set-lbl{font-size:.66em;color:var(--text-muted);min-width:30px;text-align:right;font-weight:600}
+  .set-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .set-lbl{font-size:.68em;color:var(--text-muted);min-width:34px;text-align:right;font-weight:700}
   .set-inp{
-    flex:1;max-width:72px;background:var(--bg);border:1px solid var(--border);
-    border-radius:8px;padding:8px 4px;color:var(--text);
-    font-size:.78em;font-family:inherit;outline:none;text-align:center;
+    flex:1;max-width:76px;background:var(--bg);border:1.5px solid var(--border);
+    border-radius:10px;padding:10px 6px;color:var(--text);
+    font-size:.82em;font-family:inherit;outline:none;text-align:center;font-weight:600;
+    transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
   }
-  .set-inp:focus{border-color:var(--accent)}
-  .set-inp::placeholder{color:var(--text-muted)}
-  .set-x{font-size:.7em;color:var(--text-muted);font-weight:600}
+  .set-inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .set-inp::placeholder{color:var(--text-muted);font-weight:400}
+  .set-x{font-size:.72em;color:var(--text-muted);font-weight:700}
 
   /* ---- WEIGHT HINT ---- */
   .wt-hint{
-    font-size:.64em;margin-top:4px;padding:5px 8px;
-    border-radius:8px;line-height:1.3;display:none;
+    font-size:.66em;margin-top:6px;padding:6px 10px;
+    border-radius:8px;line-height:1.4;display:none;
+    animation:slideUp .3s var(--ease-out);
   }
+  @keyframes slideUp{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
   .wt-hint.show{display:block}
   .wt-hint.suggest{background:var(--accent-soft);color:var(--accent-bright)}
   .wt-hint.deload{background:var(--lilac)18;color:var(--lilac)}
   .wt-hint b{font-weight:700}
-  .wt-hint .arrow{margin:0 3px}
+  .wt-hint .arrow{margin:0 4px;opacity:.6}
 
   /* ---- PHASE BANNER ---- */
   .phase{
-    margin:0 12px 8px;padding:8px 12px;border-radius:var(--radius-sm);
-    font-size:.68em;font-weight:600;text-align:center;display:none;
+    margin:0 12px 8px;padding:10px 14px;border-radius:var(--radius);
+    font-size:.7em;font-weight:600;text-align:center;display:none;
+    animation:fadeIn .4s var(--ease-out);
   }
   .phase.show{display:block}
   .phase.build{background:var(--accent-soft);color:var(--accent-bright);border:1px solid var(--accent-glow)}
   .phase.push{background:var(--gold-soft);color:var(--gold);border:1px solid #d4b87825}
   .phase.peak{background:#d44e4e14;color:#e87070;border:1px solid #d44e4e25}
   .phase.deload-phase{background:var(--lilac)14;color:var(--lilac);border:1px solid #b8a0d425}
+  .rpe-line{margin-top:5px;font-size:.92em;opacity:.85;font-weight:700;letter-spacing:.4px}
+  .rpe-badge{font-size:.8em;font-weight:600;opacity:.6}
 
   /* ---- WARM-UP ---- */
   .warmup{
     background:var(--surface);border:1.5px solid var(--accent-glow);
     border-radius:var(--radius);margin-bottom:10px;overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,.03);
   }
   .warmup-hdr{
-    padding:10px 14px;display:flex;align-items:center;justify-content:space-between;
-    cursor:pointer;
+    padding:12px 14px;display:flex;align-items:center;justify-content:space-between;
+    cursor:pointer;transition:background .2s var(--ease);
   }
+  .warmup-hdr:active{background:var(--accent-soft)}
   .warmup-hdr h3{font-size:.76em;color:var(--accent-bright);font-weight:700}
   .warmup-hdr .warmup-time{font-size:.64em;color:var(--text-muted)}
-  .warmup-hdr .warmup-chev{color:var(--text-muted);transition:transform .2s;font-size:.85em}
+  .warmup-hdr .warmup-chev{color:var(--text-muted);transition:transform .35s var(--ease-spring);font-size:.85em}
   .warmup-hdr .warmup-chev.open{transform:rotate(180deg)}
-  .warmup-body{display:none;padding:0 14px 10px}
-  .warmup-body.open{display:block}
+  .warmup-body{
+    max-height:0;overflow:hidden;padding:0 14px;
+    transition:max-height .4s var(--ease-out),padding .3s var(--ease);
+  }
+  .warmup-body.open{max-height:600px;padding:0 14px 12px}
   .wu-item{
     display:flex;align-items:flex-start;gap:10px;padding:8px 0;
     border-bottom:1px solid var(--border);font-size:.78em;
   }
   .wu-item:last-child{border:none}
   .wu-num{
-    flex-shrink:0;width:22px;height:22px;border-radius:50%;
+    flex-shrink:0;width:24px;height:24px;border-radius:50%;
     background:var(--accent-soft);color:var(--accent-bright);
     font-size:.65em;font-weight:700;display:flex;align-items:center;justify-content:center;
   }
   .wu-info{flex:1}
   .wu-name{font-weight:600;line-height:1.3}
   .wu-name a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--border)}
-  .wu-desc{font-size:.88em;color:var(--text-muted);margin-top:1px}
+  .wu-desc{font-size:.88em;color:var(--text-muted);margin-top:2px;line-height:1.4}
 
   /* ---- CORE SECTION ---- */
   .warmup.core{border-color:var(--mint-fill);margin-top:10px}
   .warmup.core .warmup-hdr h3{color:var(--mint)}
+  .warmup.core .warmup-hdr:active{background:var(--mint-soft)}
   .warmup.core .wu-num{background:var(--mint-soft);color:var(--mint)}
 
   /* ---- DONE BUTTON ---- */
   .dbtn{
     display:flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;padding:13px;margin-top:12px;
-    background:var(--surface);border:1.5px solid var(--accent);border-radius:var(--radius);
-    color:var(--accent-bright);font-size:.82em;font-weight:700;font-family:inherit;
-    cursor:pointer;transition:all .2s;letter-spacing:.5px;
+    width:100%;padding:14px;margin-top:14px;
+    background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);
+    color:var(--accent-bright);font-size:.84em;font-weight:700;font-family:inherit;
+    cursor:pointer;transition:all .25s var(--ease-spring);letter-spacing:.5px;
   }
-  .dbtn:active{transform:scale(.97)}
-  .dbtn.fin{background:var(--mint);border-color:var(--mint);color:var(--bg)}
-  .dbtn .ico{font-size:1.1em}
+  .dbtn:active{transform:scale(.96)}
+  .dbtn.fin{background:var(--mint);border-color:var(--mint);color:var(--bg);box-shadow:0 2px 12px rgba(61,168,122,.25)}
+  .dbtn .ico{font-size:1.15em}
 
   /* ---- NOTES ---- */
   .nta{margin-top:14px}
-  .nta label{font-size:.68em;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);display:block;margin-bottom:6px}
+  .nta label{font-size:.68em;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);display:block;margin-bottom:6px;font-weight:600}
   .nta textarea{
-    width:100%;min-height:48px;background:var(--surface);border:1px solid var(--border);
+    width:100%;min-height:52px;background:var(--surface);border:1px solid var(--border);
     border-radius:var(--radius-sm);padding:10px 12px;color:var(--text);
     font-size:.78em;font-family:inherit;resize:vertical;outline:none;
+    transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
   }
-  .nta textarea:focus{border-color:var(--accent)}
+  .nta textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
   .nta textarea::placeholder{color:var(--text-muted)}
 
   /* ============ FOOD TRACKER ============ */
@@ -255,10 +294,10 @@
   .food-hdr p{font-size:.74em;color:var(--text-muted)}
 
   /* Macro totals */
-  .macros{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:12px}
-  .mc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 4px;text-align:center}
-  .mc .v{font-size:1.2em;font-weight:700;line-height:1}
-  .mc .l{font-size:.54em;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-top:2px}
+  .macros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
+  .mc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 4px;text-align:center;transition:all .2s var(--ease);box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .mc .v{font-size:1.3em;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+  .mc .l{font-size:.54em;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-top:4px;font-weight:600}
   .mc.c .v{color:var(--gold)}
   .mc.p .v{color:var(--accent-bright)}
   .mc.cb .v{color:var(--lilac)}
@@ -268,23 +307,26 @@
   .ci-card{
     background:var(--surface);border:1px solid var(--border);
     border-radius:var(--radius);padding:16px;margin-bottom:10px;
+    box-shadow:0 1px 3px rgba(0,0,0,.04);transition:all .2s var(--ease);
   }
-  .ci-label{font-size:.68em;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);font-weight:600;margin-bottom:10px}
+  .ci-label{font-size:.68em;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);font-weight:700;margin-bottom:10px}
   .ci-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
   .ci-inp{
-    width:90px;background:var(--bg);border:1px solid var(--border);border-radius:8px;
+    width:90px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;
     padding:10px 12px;color:var(--text);font-size:.92em;font-family:inherit;
-    font-weight:600;outline:none;text-align:center;
+    font-weight:700;outline:none;text-align:center;
+    transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
   }
-  .ci-inp:focus{border-color:var(--accent)}
-  .ci-inp::placeholder{color:var(--text-muted)}
-  .ci-unit{font-size:.78em;color:var(--text-muted)}
+  .ci-inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .ci-inp::placeholder{color:var(--text-muted);font-weight:400}
+  .ci-unit{font-size:.78em;color:var(--text-muted);font-weight:600}
   .ci-save{
-    margin-left:auto;padding:10px 20px;background:var(--accent);border:none;
-    border-radius:10px;color:#fff;font-size:.78em;font-weight:600;
+    margin-left:auto;padding:10px 22px;background:var(--accent);border:none;
+    border-radius:12px;color:#fff;font-size:.78em;font-weight:700;
     font-family:inherit;cursor:pointer;
+    transition:all .2s var(--ease-spring);
   }
-  .ci-save:active{opacity:.85}
+  .ci-save:active{transform:scale(.93)}
   .ci-save.saved{background:var(--mint)}
   .ci-waist-row{display:flex;align-items:center;gap:8px;margin-top:6px}
   .ci-waist-label{font-size:.72em;color:var(--text-muted);min-width:90px}
@@ -297,37 +339,42 @@
   .ci-phase.push{background:var(--gold-soft);color:var(--gold)}
   .ci-phase.peak{background:#d44e4e14;color:#e87070}
   .ci-phase.deload-phase{background:var(--lilac)14;color:var(--lilac)}
-  .ci-breakdown{font-size:.72em;color:var(--text-muted);margin-top:8px;line-height:1.6}
+  .ci-breakdown{font-size:.72em;color:var(--text-muted);margin-top:8px;line-height:1.8}
   .ci-breakdown b{color:var(--text-dim)}
+  .ci-cycle{display:inline-block;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent-bright);font-weight:600;margin:2px 0}
+  .ci-cycle.rest{background:var(--gold-soft);color:var(--gold)}
+  .ci-detail{font-size:.92em;opacity:.7;margin-top:2px;display:inline-block}
   .ci-coach{border-color:var(--accent-glow)}
   .ci-coach-text{font-size:.8em;line-height:1.6;color:var(--text-dim)}
   .ci-coach-text b{color:var(--accent-bright);font-weight:600}
   .ci-trend{font-size:.78em}
   .ci-trend-row{
-    display:flex;align-items:center;gap:10px;padding:8px 0;
+    display:flex;align-items:center;gap:10px;padding:10px 0;
     border-bottom:1px solid var(--border);
+    transition:background .15s var(--ease);
   }
   .ci-trend-row:last-child{border:none}
-  .ci-trend-wk{color:var(--text-muted);font-size:.88em;min-width:52px}
-  .ci-trend-val{font-weight:600;min-width:56px}
-  .ci-trend-delta{font-size:.85em;margin-left:auto}
+  .ci-trend-wk{color:var(--text-muted);font-size:.88em;min-width:52px;font-weight:600}
+  .ci-trend-val{font-weight:700;min-width:56px;font-variant-numeric:tabular-nums}
+  .ci-trend-delta{font-size:.85em;margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
   .ci-trend-delta.down{color:var(--mint)}
   .ci-trend-delta.up{color:var(--gold)}
   .ci-trend-delta.flat{color:var(--text-muted)}
   .ci-trend-waist{font-size:.85em;color:var(--text-muted)}
-  .ci-trend-empty{text-align:center;padding:20px;color:var(--text-muted);font-size:.82em}
+  .ci-trend-empty{text-align:center;padding:24px;color:var(--text-muted);font-size:.82em}
 
   /* ---- RESET ---- */
   .rst{
     display:block;margin:20px auto;padding:8px 20px;background:none;
-    border:1px solid var(--border);border-radius:8px;color:var(--text-muted);
+    border:1px solid var(--border);border-radius:10px;color:var(--text-muted);
     font-size:.68em;font-family:inherit;cursor:pointer;
+    transition:all .2s var(--ease-spring);
   }
-  .rst:active{border-color:#e55;color:#e55}
+  .rst:active{border-color:#e55;color:#e55;transform:scale(.95)}
 
   /* ---- FOOTER ---- */
-  .ftr{text-align:center;padding:24px 16px;font-size:.68em;color:var(--text-muted)}
-  .ftr .br{color:var(--accent);font-weight:600}
+  .ftr{text-align:center;padding:28px 16px;font-size:.68em;color:var(--text-muted)}
+  .ftr .br{color:var(--accent);font-weight:700}
 </style>
 </head>
 <body>
@@ -361,7 +408,7 @@
 <!-- ============ DAY 1 — Lower Body A (Squat-Focused) ============ -->
 <div class="sec on" id="s0">
   <div class="sec-title">Lower Body A</div>
-  <div class="sec-meta">Squat-Focused &bull; 13 sets &bull; ~45 min</div>
+  <div class="sec-meta">Squat-Focused &bull; 13 sets &bull; ~45 min &bull; <span class="rpe-badge">RPE varies by phase</span></div>
   <div class="prog"><div class="prog-bar"><div class="prog-fill" id="pf0"></div></div><div class="prog-lbl" id="pl0">0/5</div></div>
 
   <div class="warmup">
@@ -380,15 +427,15 @@
     </div>
   </div>
 
-  <div class="xc" data-d="0" data-i="0"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=hack+squat+machine+form" target="_blank">Hack Squat</a></div><div class="xrx"><span>3 sets</span><span>6-8 reps</span><span>3 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> No shoulder load, go deep, drive through midfoot</div><div class="swp"><b>Swap:</b> Leg Press (feet high)</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e0"></div></div>
+  <div class="xc" data-d="0" data-i="0"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=hack+squat+machine+form" target="_blank">Hack Squat</a></div><div class="xrx"><span>3 sets</span><span>6-8 reps</span><span>3 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Go to parallel (~90&deg; knee flexion) for max quad stimulus. No shoulder load. Drive through midfoot.</div><div class="swp"><b>Swap:</b> Leg Press (feet high)</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e0"></div></div>
 
   <div class="xc" data-d="0" data-i="1"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=leg+press+form+tutorial" target="_blank">Leg Press</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Feet mid-platform, full depth, don't lock knees</div><div class="swp"><b>Swap:</b> Smith Machine Squat</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e1"></div></div>
 
   <div class="xc" data-d="0" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=barbell+rdl+form+tutorial" target="_blank">Barbell RDL</a></div><div class="xrx"><span>3 sets</span><span>8-10 reps</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Push hips back, bar close to shins, hamstring stretch</div><div class="swp"><b>Swap:</b> DB RDL</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e2"></div></div>
 
-  <div class="xc" data-d="0" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=goblet+squat+dumbbell+form" target="_blank">Goblet Squat</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Elbows inside knees, upright torso, full depth — works anywhere with a DB</div><div class="swp"><b>Swap:</b> Leg Press (if available)</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e3"></div></div>
+  <div class="xc" data-d="0" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=goblet+squat+dumbbell+form" target="_blank">Goblet Squat</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Elbows inside knees, upright torso, full depth &mdash; works anywhere with a DB. At Domain: use Pendulum Squat or Smith Squat for heavier loading.</div><div class="swp"><b>Swap:</b> Pendulum Squat / Smith Squat (Domain) or Leg Press</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e3"></div></div>
 
-  <div class="xc" data-d="0" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=leg+extension+form" target="_blank">Leg Extension</a></div><div class="xrx"><span>2 sets</span><span>12-15 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Squeeze at top, 2 sec hold, slow negative — hypertrophy finisher</div><div class="swp"><b>Swap:</b> Sissy Squat</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e4"></div></div>
+  <div class="xc" data-d="0" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=leg+extension+form" target="_blank">Leg Extension</a></div><div class="xrx"><span>2 sets</span><span>12-15 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> LEAN BACK on the pad (~40&deg; hip angle) &mdash; trains rectus femoris at length. Squeeze at top, 2 sec hold, slow negative. This is your primary RF builder, not just a finisher.</div><div class="swp"><b>Swap:</b> Sissy Squat</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d0e4"></div></div>
 
   <div class="warmup core">
     <div class="warmup-hdr" onclick="toggleWU(this)">
@@ -410,7 +457,7 @@
 <!-- ============ DAY 2 — Upper Push (Chest + Shoulders + Triceps) ============ -->
 <div class="sec" id="s1">
   <div class="sec-title">Upper Push</div>
-  <div class="sec-meta">Chest + Shoulders + Triceps &bull; 14 sets &bull; ~42 min</div>
+  <div class="sec-meta">Chest + Shoulders + Triceps &bull; 14 sets &bull; ~42 min &bull; <span class="rpe-badge">RPE varies by phase</span></div>
   <div class="prog"><div class="prog-bar"><div class="prog-fill" id="pf1"></div></div><div class="prog-lbl" id="pl1">0/5</div></div>
 
   <div class="warmup">
@@ -429,15 +476,15 @@
     </div>
   </div>
 
-  <div class="xc" data-d="1" data-i="0"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=dumbbell+bench+press+form" target="_blank">DB Bench Press</a></div><div class="xrx"><span>3 sets</span><span>6-8 reps</span><span>3 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Shoulder-friendly, deep stretch at bottom, press up and in</div><div class="swp"><b>Swap:</b> Machine Chest Press</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e0"></div></div>
+  <div class="xc" data-d="1" data-i="0"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=dumbbell+bench+press+form" target="_blank">DB Bench Press</a></div><div class="xrx"><span>3 sets</span><span>6-8 reps</span><span>3 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Deep stretch at bottom (lengthened bias). Press up and in. DBs let you go deeper than barbell &mdash; use it.</div><div class="swp"><b>Swap:</b> Machine Chest Press</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e0"></div></div>
 
-  <div class="xc" data-d="1" data-i="1"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=low+to+high+cable+fly+upper+chest" target="_blank">Cable Fly (low-to-high)</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Stretched position at bottom, constant cable tension, squeeze hands together at top &mdash; hits upper chest without another press</div><div class="swp"><b>Swap:</b> Pec Deck / Machine Fly</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e1"></div></div>
+  <div class="xc" data-d="1" data-i="1"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=low+to+high+cable+fly+upper+chest" target="_blank">Cable Fly (low-to-high)</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Pulleys at ANKLE height. Bring hands to forehead level (~30&deg; up). Constant tension through the full arc &mdash; cables solve the gravity problem of DB flyes. Upper chest without another press.</div><div class="swp"><b>Swap:</b> Pec Deck / Machine Fly</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e1"></div></div>
 
   <div class="xc" data-d="1" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=seated+dumbbell+shoulder+press+form" target="_blank">Seated DB Shoulder Press</a></div><div class="xrx"><span>3 sets</span><span>8-10 reps</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Pain-free range, controlled path, feel the delts</div><div class="swp"><b>Swap:</b> Machine Shoulder Press</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e2"></div></div>
 
-  <div class="xc" data-d="1" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=cable+lateral+raise+form" target="_blank">Cable Lateral Raise</a></div><div class="xrx"><span>3 sets</span><span>12-15 reps</span><span>1.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Behind body start, slight lean, pinky up at top &mdash; this builds the cap</div><div class="swp"><b>Swap:</b> DB Lateral Raise</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e3"></div></div>
+  <div class="xc" data-d="1" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=cable+lateral+raise+form" target="_blank">Cable Lateral Raise</a></div><div class="xrx"><span>3 sets</span><span>12-15 reps</span><span>1.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Cable at HIP HEIGHT (not lowest). Cross behind body, lean away &mdash; peak tension hits the delt at its most stretched position. Pinky up at top.</div><div class="swp"><b>Swap:</b> DB Lateral Raise</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e3"></div></div>
 
-  <div class="xc" data-d="1" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=tricep+cable+pushdown+form" target="_blank">Cable Tricep Pushdown</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Elbows pinned, full extension, squeeze at bottom</div><div class="swp"><b>Swap:</b> Overhead Cable Extension</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e4"></div></div>
+  <div class="xc" data-d="1" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=overhead+cable+tricep+extension+form" target="_blank">Overhead Cable Extension</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Face away, stretch the long head fully, elbows by ears &mdash; 40% more tricep growth than pushdowns (lengthened bias)</div><div class="swp"><b>Swap:</b> EZ Bar Skull Crusher</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d1e4"></div></div>
 
   <div class="nta"><label>Session Notes</label><textarea placeholder="How'd it feel today?" data-k="n1"></textarea></div>
   <button class="dbtn" id="db1" onclick="dayDone(1)"><span class="ico">&#10003;</span> Mark Day Complete</button>
@@ -446,7 +493,7 @@
 <!-- ============ DAY 3 — Lower Body B (Hinge-Focused) ============ -->
 <div class="sec" id="s2">
   <div class="sec-title">Lower Body B</div>
-  <div class="sec-meta">Hinge-Focused &bull; 13 sets &bull; ~45 min</div>
+  <div class="sec-meta">Hinge-Focused &bull; 13 sets &bull; ~45 min &bull; <span class="rpe-badge">RPE varies by phase</span></div>
   <div class="prog"><div class="prog-bar"><div class="prog-fill" id="pf2"></div></div><div class="prog-lbl" id="pl2">0/5</div></div>
 
   <div class="warmup">
@@ -469,9 +516,9 @@
 
   <div class="xc" data-d="2" data-i="1"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=barbell+hip+thrust+form" target="_blank">Hip Thrust (barbell)</a></div><div class="xrx"><span>3 sets</span><span>8-10 reps</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Drive through heels, full extension, 2 sec squeeze</div><div class="swp"><b>Swap:</b> KAS Glute Bridge</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d2e1"></div></div>
 
-  <div class="xc" data-d="2" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=bulgarian+split+squat+dumbbell+form" target="_blank">Bulgarian Split Squat (DBs)</a></div><div class="xrx"><span>3 sets</span><span>8-10/side</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Front foot flat, slight forward lean, control the descent — quad and glute</div><div class="swp"><b>Swap:</b> Walking Lunge (DBs)</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d2e2"></div></div>
+  <div class="xc" data-d="2" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=bulgarian+split+squat+dumbbell+form" target="_blank">Bulgarian Split Squat (DBs)</a></div><div class="xrx"><span>3 sets</span><span>8-10/side</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Front foot flat, slight forward lean, control the descent. Unilateral quad + glute with zero spinal load.</div><div class="swp"><b>Swap:</b> Walking Lunge (DBs)</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d2e2"></div></div>
 
-  <div class="xc" data-d="2" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=lying+leg+curl+form" target="_blank">Lying Leg Curl</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Slow eccentric 3 sec, squeeze at top</div><div class="swp"><b>Swap:</b> Seated Leg Curl</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d2e3"></div></div>
+  <div class="xc" data-d="2" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=seated+leg+curl+form" target="_blank">Seated Leg Curl</a></div><div class="xrx"><span>2 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Hips flexed = hamstrings lengthened = ~50% more growth than lying. Slow eccentric 3 sec, squeeze at top</div><div class="swp"><b>Swap:</b> Lying Leg Curl</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d2e3"></div></div>
 
   <div class="xc" data-d="2" data-i="4"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=hip+adductor+machine+form" target="_blank">Adductor Machine</a></div><div class="xrx"><span>2 sets</span><span>12-15 reps</span><span>1.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Controlled squeeze, slow release</div><div class="swp"><b>Swap:</b> Sumo Goblet Squat</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d2e4"></div></div>
 
@@ -495,7 +542,7 @@
 <!-- ============ DAY 4 — Upper Pull (Back + Rear Delts + Biceps) ============ -->
 <div class="sec" id="s3">
   <div class="sec-title">Upper Pull</div>
-  <div class="sec-meta">Back + Rear Delts + Biceps &bull; 13 sets &bull; ~42 min</div>
+  <div class="sec-meta">Back + Rear Delts + Biceps &bull; 13 sets &bull; ~42 min &bull; <span class="rpe-badge">RPE varies by phase</span></div>
   <div class="prog"><div class="prog-bar"><div class="prog-fill" id="pf3"></div></div><div class="prog-lbl" id="pl3">0/5</div></div>
 
   <div class="warmup">
@@ -531,7 +578,7 @@
 <!-- ============ DAY 5 — Shoulders + Arms (Weak Point) ============ -->
 <div class="sec" id="s4">
   <div class="sec-title">Shoulders + Arms</div>
-  <div class="sec-meta">Weak Point Day &bull; 12 sets &bull; ~35 min</div>
+  <div class="sec-meta">Weak Point Day &bull; 12 sets &bull; ~35 min &bull; <span class="rpe-badge">RPE varies by phase</span></div>
   <div class="prog"><div class="prog-bar"><div class="prog-fill" id="pf4"></div></div><div class="prog-lbl" id="pl4">0/4</div></div>
 
   <div class="warmup">
@@ -553,11 +600,11 @@
 
   <div class="xc" data-d="4" data-i="0"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=machine+shoulder+press+form" target="_blank">Machine Shoulder Press</a></div><div class="xrx"><span>3 sets</span><span>8-10 reps</span><span>2.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Guided path is safer for your shoulder, full range</div><div class="swp"><b>Swap:</b> Landmine Press</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e0"></div></div>
 
-  <div class="xc" data-d="4" data-i="1"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=cable+lateral+raise+side+delt" target="_blank">Cable Lateral Raise</a></div><div class="xrx"><span>3 sets</span><span>12-15 reps</span><span>1.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Constant tension, slight lean, slow lowering &mdash; builds the cap</div><div class="swp"><b>Swap:</b> DB Lateral Raise</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e1"></div></div>
+  <div class="xc" data-d="4" data-i="1"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=cable+lateral+raise+side+delt" target="_blank">Cable Lateral Raise</a></div><div class="xrx"><span>3 sets</span><span>12-15 reps</span><span>1.5 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Cable at HIP HEIGHT. Cross behind body, lean away &mdash; constant tension at the stretched position. Slow lowering. Builds the cap.</div><div class="swp"><b>Swap:</b> DB Lateral Raise</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e1"></div></div>
 
-  <div class="xc" data-d="4" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=overhead+cable+tricep+extension+form" target="_blank">Overhead Cable Extension</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Face away from cable, stretch the long head, elbows by ears</div><div class="swp"><b>Swap:</b> EZ Bar Skull Crusher</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e2"></div></div>
+  <div class="xc" data-d="4" data-i="2"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=overhead+cable+tricep+extension+form" target="_blank">Overhead Cable Extension</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> Face away, full stretch overhead, elbows by ears. This is your #1 tricep builder &mdash; 40% more growth than pushdowns. Go heavy here.</div><div class="swp"><b>Swap:</b> EZ Bar Skull Crusher</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e2"></div></div>
 
-  <div class="xc" data-d="4" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=incline+dumbbell+curl+form" target="_blank">Incline DB Curl</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> 45&deg; bench, arms hang straight, full stretch at bottom &mdash; bicep peak</div><div class="swp"><b>Swap:</b> Cable Curl</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e3"></div></div>
+  <div class="xc" data-d="4" data-i="3"><div class="xr"><div class="xck" onclick="ck(this)"></div><div class="xb"><div class="xn"><a href="https://www.youtube.com/results?search_query=incline+dumbbell+curl+form" target="_blank">Incline DB Curl</a></div><div class="xrx"><span>3 sets</span><span>10-12 reps</span><span>2 min</span></div></div></div><div class="xd"><div class="cue"><b>Cue:</b> 45&deg; bench, arms hang back (shoulder extension = max long head stretch). Full range, no momentum. This is how you build the peak.</div><div class="swp"><b>Swap:</b> Cable Curl</div></div><div class="xd"><input class="linp" placeholder="Weight used..." data-k="d4e3"></div></div>
 
   <div class="warmup core">
     <div class="warmup-hdr" onclick="toggleWU(this)">
@@ -660,12 +707,12 @@ window.toggleWU=function(hdr){
 // ===== CHECK-IN =====
 // Macro multipliers by phase (calories per lb bodyweight)
 var MACRO_PHASES=[
-  {wks:[1,2,3],mult:14,note:'<b>Build Phase</b> — Slight deficit (BW &times; 14). Dial in your protein target every single day. Don\'t chase the scale yet — your body is adapting to the new stimulus. If you\'re hitting 190g+ protein and training hard, trust the process.',cls:'build'},
-  {wks:[4],mult:15,note:'<b>Deload Week</b> — Eat closer to maintenance (BW &times; 15). Your body repairs and grows during recovery, not during training. Extra carbs this week = better performance when you ramp back up.',cls:'deload-phase'},
-  {wks:[5,6,7],mult:13,note:'<b>Push Phase</b> — Moderate deficit (BW &times; 13). This is where the fat starts coming off. Protein stays high, carbs come down slightly. Time your carbs around training — biggest meal post-workout. If energy tanks, bump carbs by 25g on training days.',cls:'push'},
-  {wks:[8],mult:15,note:'<b>Deload Week</b> — Back to maintenance (BW &times; 15). You\'ve been in a deficit for 3 weeks. This refeed primes your metabolism and restores glycogen. You might look fuller this week — that\'s the carbs, not fat.',cls:'deload-phase'},
-  {wks:[9,10,11],mult:12.5,note:'<b>Peak Phase</b> — Tightest deficit (BW &times; 12.5). This is the final push. You\'re at your strongest, loads are heaviest, and the deficit is doing its job. Protein is non-negotiable. If you\'re under 190g protein on any day, that\'s the #1 thing to fix.',cls:'peak'},
-  {wks:[12],mult:14,note:'<b>Deload &amp; Taper</b> — Ease back up (BW &times; 14). Light training, moderate food. Let your body fill out before summer. You did the work — this week is about looking your best, not losing more.',cls:'deload-phase'},
+  {wks:[1,2,3],mult:13.5,note:'<b>Build Phase</b> &mdash; ~300 cal deficit (BW &times; 13.5). Lock in protein at 215g+ every single day. Don\'t chase the scale yet &mdash; your body is adapting to the new stimulus. Training days: add 200 cal as carbs around your workout. Rest days: subtract 200 cal from carbs.',cls:'build'},
+  {wks:[4],mult:14.5,note:'<b>Deload Week</b> &mdash; Near-maintenance refeed (BW &times; 14.5). Your body repairs and grows during recovery, not training. Extra carbs restore glycogen and prime your metabolism. Eat at this level for 5-7 full days.',cls:'deload-phase'},
+  {wks:[5,6,7],mult:12.5,note:'<b>Push Phase</b> &mdash; ~500 cal deficit (BW &times; 12.5). This is where fat comes off. Protein stays at 215g+ &mdash; non-negotiable. Time carbs around training. If energy tanks, bump carbs by 25g on training days only. Training days: +200 cal. Rest days: -200 cal.',cls:'push'},
+  {wks:[8],mult:14.5,note:'<b>Deload Week</b> &mdash; Diet break at maintenance (BW &times; 14.5). You\'ve been in a deficit for 3 weeks. This full refeed primes your metabolism and restores glycogen. You\'ll look fuller &mdash; that\'s the carbs, not fat. Enjoy it.',cls:'deload-phase'},
+  {wks:[9,10,11],mult:12,note:'<b>Peak Phase</b> &mdash; Tightest deficit (BW &times; 12). Final push. Heaviest loads, deepest deficit. Protein at 215g+ is the #1 priority. Take isolations to failure. Training days: +200 cal (performance matters). Rest days: -200 cal.',cls:'peak'},
+  {wks:[12],mult:14.5,note:'<b>Deload &amp; Taper</b> &mdash; Back to maintenance (BW &times; 14.5). Light training, full food. Let your body fill out before summer. You did the work &mdash; this week is about looking your best.',cls:'deload-phase'},
 ];
 
 function getMacroPhase(){
@@ -675,12 +722,17 @@ function getMacroPhase(){
 
 function calcMacros(bw){
   var ph=getMacroPhase();
-  var cal=Math.round(bw*ph.mult);
-  var pro=Math.round(bw); // 1g/lb
-  var fat=Math.round(bw*0.35); // 0.35g/lb
-  var carb=Math.round((cal-pro*4-fat*9)/4);
-  if(carb<0)carb=0;
-  return{cal:cal,pro:pro,carb:carb,fat:fat,mult:ph.mult,note:ph.note,cls:ph.cls};
+  var baseCal=Math.round(bw*ph.mult);
+  var pro=Math.round(bw*1.1); // 1.1g/lb — Helms/Aragon consensus for deficit
+  var fat=Math.round(bw*0.3); // 0.3g/lb — frees carbs vs 0.35
+  var baseCarb=Math.round((baseCal-pro*4-fat*9)/4);
+  if(baseCarb<0)baseCarb=0;
+  // Calorie cycling: +200 training, -200 rest
+  var trainCal=baseCal+200,restCal=baseCal-200;
+  var trainCarb=Math.round((trainCal-pro*4-fat*9)/4);
+  var restCarb=Math.round((restCal-pro*4-fat*9)/4);
+  if(trainCarb<0)trainCarb=0;if(restCarb<0)restCarb=0;
+  return{cal:baseCal,pro:pro,carb:baseCarb,fat:fat,mult:ph.mult,note:ph.note,cls:ph.cls,trainCal:trainCal,restCal:restCal,trainCarb:trainCarb,restCarb:restCarb};
 }
 
 window.saveWeight=function(){
@@ -708,11 +760,11 @@ function renderCheckIn(){
   document.getElementById('ciWeight').value=savedW||'';
   document.getElementById('ciWaist').value=savedWaist||'';
 
-  // Calculate macros
+  // Calculate macros (show training-day numbers as primary)
   var m=calcMacros(bw);
-  document.getElementById('ciCal').textContent=m.cal;
+  document.getElementById('ciCal').textContent=m.trainCal;
   document.getElementById('ciPro').textContent=m.pro+'g';
-  document.getElementById('ciCarb').textContent=m.carb+'g';
+  document.getElementById('ciCarb').textContent=m.trainCarb+'g';
   document.getElementById('ciFat').textContent=m.fat+'g';
 
   // Phase badge
@@ -720,10 +772,12 @@ function renderCheckIn(){
   phEl.className='ci-phase '+m.cls;
   phEl.innerHTML=getMacroPhase().wks.length>1?getPhase().name:getPhase().name;
 
-  // Breakdown
+  // Breakdown with calorie cycling
   document.getElementById('ciBreakdown').innerHTML=
-    '<b>Based on '+bw+' lbs</b> &mdash; BW &times; '+m.mult+' = '+m.cal+' cal<br>'+
-    'Protein: '+m.pro+'g (1g/lb) &bull; Fat: '+m.fat+'g (0.35g/lb) &bull; Carbs: '+m.carb+'g (remaining)';
+    '<b>Based on '+bw+' lbs</b> &mdash; BW &times; '+m.mult+' = '+m.cal+' cal/day<br>'+
+    '<span class="ci-cycle"><b>Training Days:</b> '+m.trainCal+' cal &bull; '+m.pro+'g P &bull; '+m.trainCarb+'g C &bull; '+m.fat+'g F</span><br>'+
+    '<span class="ci-cycle rest"><b>Rest Days:</b> '+m.restCal+' cal &bull; '+m.pro+'g P &bull; '+m.restCarb+'g C &bull; '+m.fat+'g F</span><br>'+
+    '<span class="ci-detail">Protein: '+m.pro+'g (1.1g/lb) &bull; Fat: '+m.fat+'g (0.3g/lb) &bull; Carbs: fill remaining</span>';
 
   // Coach note
   document.getElementById('ciCoachText').innerHTML=m.note;
@@ -757,12 +811,12 @@ function isDeload(){return DELOAD_WEEKS.indexOf(wk)>-1}
 
 // Phase info
 var PHASES=[
-  {wks:[1,2,3],name:'Build Phase',cls:'build',desc:'Focus on form, find working weights'},
-  {wks:[4],name:'Deload Week',cls:'deload-phase',desc:'Reduce weight ~40%, fewer sets — let your body recover'},
-  {wks:[5,6,7],name:'Push Phase',cls:'push',desc:'Increase weight when hitting top of rep range'},
-  {wks:[8],name:'Deload Week',cls:'deload-phase',desc:'Reduce weight ~40%, fewer sets — recover and reset'},
-  {wks:[9,10,11],name:'Peak Phase',cls:'peak',desc:'Heaviest loads on compounds — you are strongest here'},
-  {wks:[12],name:'Deload Week',cls:'deload-phase',desc:'Light week before summer — you earned it'},
+  {wks:[1,2,3],name:'Build Phase',cls:'build',desc:'Focus on form, find working weights',rpe:'RPE 7\u20138 \u00b7 2\u20133 reps in reserve',rpeShort:'2-3 RIR'},
+  {wks:[4],name:'Deload Week',cls:'deload-phase',desc:'~60% of working weight, fewer sets \u2014 let your body recover',rpe:'RPE 5\u20136 \u00b7 Easy effort',rpeShort:'Easy'},
+  {wks:[5,6,7],name:'Push Phase',cls:'push',desc:'Increase weight when hitting top of rep range',rpe:'RPE 8\u20139 \u00b7 1\u20132 reps in reserve',rpeShort:'1-2 RIR'},
+  {wks:[8],name:'Deload Week',cls:'deload-phase',desc:'~60% of working weight, fewer sets \u2014 recover and reset',rpe:'RPE 5\u20136 \u00b7 Easy effort',rpeShort:'Easy'},
+  {wks:[9,10,11],name:'Peak Phase',cls:'peak',desc:'Heaviest loads \u2014 you are strongest here. Isolations to failure.',rpe:'RPE 9\u201310 \u00b7 0\u20131 reps in reserve',rpeShort:'0-1 RIR'},
+  {wks:[12],name:'Deload Week',cls:'deload-phase',desc:'Light week before summer \u2014 you earned it',rpe:'RPE 5\u20136 \u00b7 Easy effort',rpeShort:'Easy'},
 ];
 
 function getPhase(){
@@ -782,7 +836,7 @@ window.chWk=function(d){wk=Math.max(1,Math.min(12,wk+d));document.getElementById
 function updPhase(){
   var ph=getPhase(),el=document.getElementById('phaseBanner');
   el.className='phase show '+ph.cls;
-  el.innerHTML='<b>'+ph.name+'</b> &mdash; '+ph.desc;
+  el.innerHTML='<b>'+ph.name+'</b> &mdash; '+ph.desc+'<div class="rpe-line">'+ph.rpe+'</div>';
 }
 
 // Progressive overload hints
@@ -844,11 +898,33 @@ function updHints(){
 }
 
 // Nav
+var curTab=0;
 window.go=function(i){
+  curTab=i;
   document.querySelectorAll('.nav-t').forEach(function(t,j){t.classList.toggle('on',j===i)});
   document.querySelectorAll('.sec').forEach(function(s,j){s.classList.toggle('on',j===i)});
   document.getElementById('mainRst').style.display=i===5?'none':'block';
+  // Scroll nav tab into view
+  var tab=document.querySelectorAll('.nav-t')[i];
+  if(tab)tab.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 };
+
+// Swipe between days (Strava/Hevy pattern)
+(function(){
+  var startX=0,startY=0,threshold=60,restraint=100;
+  var main=document.querySelector('body');
+  main.addEventListener('touchstart',function(e){
+    startX=e.touches[0].clientX;startY=e.touches[0].clientY;
+  },{passive:true});
+  main.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-startX;
+    var dy=Math.abs(e.changedTouches[0].clientY-startY);
+    if(Math.abs(dx)>=threshold&&dy<=restraint){
+      if(dx<0&&curTab<5)go(curTab+1); // swipe left = next
+      else if(dx>0&&curTab>0)go(curTab-1); // swipe right = prev
+    }
+  },{passive:true});
+})();
 
 // Exercise check
 window.ck=function(el){
@@ -925,6 +1001,15 @@ document.querySelectorAll('.xc').forEach(function(card){
 });
 
 restore();
+
+// Scroll-linked header shadow (Apple/Strava pattern)
+var hdrEl=document.querySelector('.hdr'),scrollTick=false;
+window.addEventListener('scroll',function(){
+  if(!scrollTick){requestAnimationFrame(function(){
+    hdrEl.classList.toggle('scrolled',window.scrollY>10);
+    scrollTick=false;
+  });scrollTick=true}
+},{passive:true});
 })();
 </script>
 </body>
