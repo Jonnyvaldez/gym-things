@@ -172,7 +172,7 @@
 |---|----------|------|------|-------|
 | 1 | Hanging Knee Raise | 3 | 10–12 | Control the swing, curl hips up, slow lowering |
 | 2 | Ab Wheel Rollout | 3 | 8–10 | Brace hard, extend as far as you control, no hip sag |
-| 3 | Pallof Press (cable) | 2 | 10/side | Anti-rotation — press out, hold 2 sec, resist the pull |
+| 3 | Landmine Rotation | 2 | 10/side | Rotational power — pivot feet, drive with hips, arms extended |
 
 ### Day 3 Core (~8 min)
 | # | Exercise | Sets | Reps | Notes |
