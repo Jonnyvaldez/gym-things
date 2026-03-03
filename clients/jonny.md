@@ -65,21 +65,34 @@
 
 | Muscle Group | Frequency | Why |
 |-------------|-----------|-----|
-| Quads | 2x/week | Lower A + Lower B |
-| Glutes | 2x/week | Squat + Hip Thrust + Lunges |
-| Hamstrings | 2x/week | RDL + Deadlift + Leg Curl |
-| Chest | 2x/week | Upper Push (DB bench + incline + cable pushdown) |
-| Back | 2x/week | Upper Pull (T-bar + pulldown + cable row) |
-| Shoulders | 3x/week | Push + Pull (face pull) + Day 5 |
-| Triceps | 2x/week | Push (cable pushdown) + Day 5 |
-| Biceps | 2x/week | Pull (curls) + Day 5 |
-| Calves | 1x/week | Lower A |
+| Quads | 2x/week | Day 2 Lower A + Day 4 Lower B |
+| Glutes | 2x/week | Day 2 (RDL) + Day 4 (hip thrust + BSS) |
+| Hamstrings | 2x/week | Day 2 (RDL) + Day 4 (deadlift + seated curl) |
+| Chest | 1x/week | Day 1 Upper Push (DB bench + cable fly) |
+| Back | 1x/week | Day 3 Upper Pull (T-bar + pulldown + cable row) |
+| Shoulders | 3x/week | Day 1 (press + lateral) + Day 3 (face pull) + Day 5 |
+| Triceps | 2x/week | Day 1 (overhead ext) + Day 5 (overhead ext) |
+| Biceps | 2x/week | Day 3 (barbell curl) + Day 5 (incline curl) |
 
 ---
 
 ## Week 1 Program
 
-### Day 1 — Lower Body A (Squat-Focused)
+### Day 1 — Upper Push (Chest + Shoulders + Triceps)
+
+| # | Exercise | Sets | Reps | Rest | Notes |
+|---|----------|------|------|------|-------|
+| 1 | DB Bench Press | 3 | 6–8 | 3 min | Deep stretch at bottom (lengthened bias). Press up and in. DBs go deeper than barbell — use it. |
+| 2 | Cable Fly (low-to-high) | 3 | 10–12 | 2 min | Pulleys at ANKLE height. Hands to forehead level (~30° up). Constant tension through the full arc — upper chest without another press. |
+| 3 | Seated DB Shoulder Press | 3 | 8–10 | 2.5 min | Pain-free range, controlled path, feel the delts |
+| 4 | Cable Lateral Raise | 3 | 12–15 | 1.5 min | Cable at HIP HEIGHT (not lowest). Cross behind body, lean away — peak tension at stretched position. Pinky up at top. |
+| 5 | Overhead Cable Extension | 2 | 10–12 | 2 min | Face away, stretch the long head fully, elbows by ears — 40% more tricep growth than pushdowns (lengthened bias). |
+
+**Total: 14 sets | ~42 min**
+
+---
+
+### Day 2 — Lower Body A (Squat-Focused)
 
 | # | Exercise | Sets | Reps | Rest | Notes |
 |---|----------|------|------|------|-------|
@@ -93,35 +106,7 @@
 
 ---
 
-### Day 2 — Upper Push (Chest + Shoulders + Triceps)
-
-| # | Exercise | Sets | Reps | Rest | Notes |
-|---|----------|------|------|------|-------|
-| 1 | DB Bench Press | 3 | 6–8 | 3 min | Deep stretch at bottom (lengthened bias). Press up and in. DBs go deeper than barbell — use it. |
-| 2 | Cable Fly (low-to-high) | 3 | 10–12 | 2 min | Pulleys at ANKLE height. Hands to forehead level (~30° up). Constant tension through the full arc — upper chest without another press. |
-| 3 | Seated DB Shoulder Press | 3 | 8–10 | 2.5 min | Pain-free range, controlled path, feel the delts |
-| 4 | Cable Lateral Raise | 3 | 12–15 | 1.5 min | Cable at HIP HEIGHT (not lowest). Cross behind body, lean away — peak tension at stretched position. Pinky up at top. |
-| 5 | Overhead Cable Extension | 2 | 10–12 | 2 min | Face away, stretch the long head fully, elbows by ears — 40% more tricep growth than pushdowns (lengthened bias). |
-
-**Total: 13 sets | ~40 min**
-
----
-
-### Day 3 — Lower Body B (Hinge-Focused)
-
-| # | Exercise | Sets | Reps | Rest | Notes |
-|---|----------|------|------|------|-------|
-| 1 | Trap Bar Deadlift | 3 | 5–6 | 3 min | Push the floor away, chest up, lock out with glutes |
-| 2 | Hip Thrust (barbell) | 3 | 8–10 | 2.5 min | Drive through heels, full extension, 2 sec squeeze |
-| 3 | Bulgarian Split Squat (DBs) | 3 | 8–10/side | 2.5 min | Front foot flat, slight forward lean, control descent. Unilateral quad + glute with zero spinal load. |
-| 4 | Seated Leg Curl | 2 | 10–12 | 2 min | Hips flexed = hamstrings lengthened = ~50% more growth than lying. Slow eccentric 3 sec, squeeze at top. Swap: Lying Leg Curl. |
-| 5 | Adductor Machine | 2 | 12–15 | 1.5 min | Controlled squeeze, slow release |
-
-**Total: 13 sets | ~45 min**
-
----
-
-### Day 4 — Upper Pull (Back + Rear Delts + Biceps)
+### Day 3 — Upper Pull (Back + Rear Delts + Biceps)
 
 | # | Exercise | Sets | Reps | Rest | Notes |
 |---|----------|------|------|------|-------|
@@ -132,6 +117,20 @@
 | 5 | Barbell Curl | 2 | 10–12 | 1.5 min | Elbows pinned, full range, no body english |
 
 **Total: 13 sets | ~42 min**
+
+---
+
+### Day 4 — Lower Body B (Hinge-Focused)
+
+| # | Exercise | Sets | Reps | Rest | Notes |
+|---|----------|------|------|------|-------|
+| 1 | Trap Bar Deadlift | 3 | 5–6 | 3 min | Push the floor away, chest up, lock out with glutes |
+| 2 | Hip Thrust (barbell) | 3 | 8–10 | 2.5 min | Drive through heels, full extension, 2 sec squeeze |
+| 3 | Bulgarian Split Squat (DBs) | 3 | 8–10/side | 2.5 min | Front foot flat, slight forward lean, control descent. Unilateral quad + glute with zero spinal load. |
+| 4 | Seated Leg Curl | 2 | 10–12 | 2 min | Hips flexed = hamstrings lengthened = ~50% more growth than lying. Slow eccentric 3 sec, squeeze at top. Swap: Lying Leg Curl. |
+| 5 | Adductor Machine | 2 | 12–15 | 1.5 min | Controlled squeeze, slow release |
+
+**Total: 13 sets | ~45 min**
 
 ---
 
@@ -152,29 +151,29 @@
 
 | Muscle Group | Sets/Week | Frequency | Hit On |
 |-------------|-----------|-----------|--------|
-| Quads | ~12 | 2x/week | Lower A (hack squat + leg press + leg ext + BSS) + Lower B |
-| Glutes | ~9 | 2x/week | Lower A (RDL + BSS) + Lower B (hip thrust + lunge) |
-| Hamstrings | ~8 | 2x/week | Lower A + Lower B |
-| Chest | ~8 | 2x/week | Upper Push + Day 5 (overhead press) |
-| Back | ~9 | 2x/week | Upper Pull + indirect |
-| Shoulders | ~10 | 3x/week | Push + Pull + Day 5 |
-| Triceps | ~8 | 2x/week | Push (overhead ext) + Day 5 (overhead ext) — both lengthened bias |
-| Biceps | ~5 | 2x/week | Pull + Day 5 |
-| Core | ~16 | 3x/week | Day 1 + Day 3 + Day 5 (hanging raises, wheel, Pallof, windmill, woodchop, plank) |
+| Quads | ~12 | 2x/week | Day 2 (hack squat + leg press + leg ext) + Day 4 (BSS) |
+| Glutes | ~9 | 2x/week | Day 2 (RDL) + Day 4 (hip thrust + BSS) |
+| Hamstrings | ~8 | 2x/week | Day 2 (RDL) + Day 4 (deadlift + seated curl) |
+| Chest | ~6 | 1x/week | Day 1 (DB bench + cable fly) |
+| Back | ~11 | 1x/week | Day 3 (T-bar row + pulldown + cable row + face pull) |
+| Shoulders | ~10 | 3x/week | Day 1 (press + lateral) + Day 3 (face pull) + Day 5 (press + lateral) |
+| Triceps | ~5 | 2x/week | Day 1 (overhead ext) + Day 5 (overhead ext) — both lengthened bias |
+| Biceps | ~5 | 2x/week | Day 3 (barbell curl) + Day 5 (incline curl) |
+| Core | ~16 | 3x/week | Day 2 + Day 4 + Day 5 (hanging raises, wheel, windmill, woodchop, plank) |
 | **Total** | **~71 sets** | | |
 
 ---
 
-## Core Work (3x/week — Days 1, 3, 5)
+## Core Work (3x/week — Days 2, 4, 5)
 
-### Day 1 Core (~8 min)
+### Day 2 Core (~8 min)
 | # | Exercise | Sets | Reps | Notes |
 |---|----------|------|------|-------|
 | 1 | Hanging Knee Raise | 3 | 10–12 | Control the swing, curl hips up, slow lowering |
 | 2 | Ab Wheel Rollout | 3 | 8–10 | Brace hard, extend as far as you control, no hip sag |
 | 3 | Landmine Rotation | 2 | 10/side | Rotational power — pivot feet, drive with hips, arms extended |
 
-### Day 3 Core (~8 min)
+### Day 4 Core (~8 min)
 | # | Exercise | Sets | Reps | Notes |
 |---|----------|------|------|-------|
 | 1 | Hanging Leg Raise | 3 | 8–10 | Straight legs, control swing, curl hips at top |
