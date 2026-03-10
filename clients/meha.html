@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Meha">
+<meta name="theme-color" content="#13100d">
+<title>Meha — Training Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #13100d;
+    --surface:   #1c1713;
+    --surface2:  #241e18;
+    --border:    #332b22;
+    --text:      #f0ebe5;
+    --text-dim:  #9e8e7e;
+    --text-muted:#5a4e44;
+
+    --amber:     #e8a268;
+    --amber-soft:rgba(232,162,104,.13);
+    --amber-line:rgba(232,162,104,.35);
+
+    --teal:      #4cb8a4;
+    --teal-soft: rgba(76,184,164,.13);
+    --teal-line: rgba(76,184,164,.35);
+
+    --blue:      #7aafd4;
+    --blue-soft: rgba(122,175,212,.13);
+    --blue-line: rgba(122,175,212,.35);
+
+    --rose:      #d4788a;
+    --rose-soft: rgba(212,120,138,.13);
+    --rose-line: rgba(212,120,138,.35);
+
+    --radius:    14px;
+    --radius-sm: 10px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100dvh;
+    padding-bottom:56px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── HEADER ── */
+  .hdr{
+    position:sticky;top:0;z-index:100;
+    background:var(--bg);
+    padding-top:env(safe-area-inset-top,0);
+    border-bottom:1px solid var(--border);
+    transition:box-shadow .25s;
+  }
+  .hdr.raised{box-shadow:0 4px 24px rgba(0,0,0,.45)}
+
+  .hdr-top{
+    padding:18px 20px 14px;
+    text-align:center;
+  }
+  .hdr-label{
+    font-size:10px;font-weight:700;
+    letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--text-muted);margin-bottom:5px;
+  }
+  .hdr-name{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:36px;font-weight:600;
+    letter-spacing:-.5px;line-height:1;
+    color:var(--text);margin-bottom:5px;
+  }
+  .hdr-sub{
+    font-size:12px;font-weight:500;
+    color:var(--text-dim);
+  }
+  .hdr-sub span{color:var(--amber)}
+
+  /* ── TABS ── */
+  .tabs{
+    display:flex;position:relative;
+    padding:0 20px;gap:0;
+  }
+  .tab{
+    flex:1;padding:11px 0;
+    font-size:13px;font-weight:700;
+    text-align:center;cursor:pointer;
+    color:var(--text-muted);
+    border-bottom:2px solid transparent;
+    transition:color .2s,border-color .2s;
+    letter-spacing:.4px;user-select:none;
+  }
+  .tab.active{
+    color:var(--amber);
+    border-bottom-color:var(--amber);
+  }
+
+  /* ── PANELS ── */
+  .panel{display:none}
+  .panel.active{display:block}
+
+  /* ── CATEGORY SECTION ── */
+  .cat{margin:20px 16px 0}
+
+  .cat-hdr{
+    display:flex;align-items:center;gap:8px;
+    margin-bottom:10px;
+  }
+  .cat-dot{
+    width:6px;height:6px;border-radius:50%;flex-shrink:0;
+  }
+  .cat-title{
+    font-size:10.5px;font-weight:700;
+    letter-spacing:1.8px;text-transform:uppercase;
+    color:var(--text-muted);
+  }
+  .cat-rule{flex:1;height:1px;background:var(--border)}
+
+  /* ── EXERCISE CARD ── */
+  .ex{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-left:3px solid var(--c-line);
+    border-radius:var(--radius);
+    padding:14px 15px;
+    margin-bottom:8px;
+    display:flex;gap:13px;align-items:flex-start;
+  }
+  .ex-body{flex:1;min-width:0}
+  .ex-name{
+    font-size:15px;font-weight:700;
+    letter-spacing:-.15px;color:var(--text);
+    margin-bottom:5px;
+  }
+  .ex-cue{
+    font-size:12.5px;font-weight:400;
+    color:var(--text-dim);line-height:1.6;
+  }
+  .ex-badge{
+    font-size:11.5px;font-weight:800;
+    padding:4px 10px;border-radius:20px;
+    white-space:nowrap;flex-shrink:0;
+    margin-top:2px;letter-spacing:.2px;
+    background:var(--c-soft);color:var(--c-color);
+  }
+
+  /* Category theming via CSS vars */
+  .lower { --c-color:var(--amber); --c-soft:var(--amber-soft); --c-line:var(--amber-line); }
+  .lower .cat-dot { background:var(--amber); }
+
+  .push  { --c-color:var(--teal);  --c-soft:var(--teal-soft);  --c-line:var(--teal-line);  }
+  .push  .cat-dot { background:var(--teal); }
+
+  .pull  { --c-color:var(--blue);  --c-soft:var(--blue-soft);  --c-line:var(--blue-line);  }
+  .pull  .cat-dot { background:var(--blue); }
+
+  .core  { --c-color:var(--rose);  --c-soft:var(--rose-soft);  --c-line:var(--rose-line);  }
+  .core  .cat-dot { background:var(--rose); }
+
+  /* ── PHASE NOTE ── */
+  .phase-note{
+    margin:24px 16px 0;
+    background:var(--amber-soft);
+    border:1px solid var(--amber-line);
+    border-radius:var(--radius);
+    padding:15px 16px;
+  }
+  .phase-note-title{
+    font-size:10px;font-weight:800;
+    letter-spacing:2px;text-transform:uppercase;
+    color:var(--amber);margin-bottom:7px;
+  }
+  .phase-note-body{
+    font-size:13px;color:var(--text-dim);
+    line-height:1.65;
+  }
+</style>
+</head>
+<body>
+
+<div class="hdr" id="hdr">
+  <div class="hdr-top">
+    <div class="hdr-label">Jonny Valdez Coaching</div>
+    <div class="hdr-name">Meha</div>
+    <div class="hdr-sub">2-Day Full Body &bull; <span>Phase 1 — Foundation</span></div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchDay('a')">Day A</div>
+    <div class="tab"        onclick="switchDay('b')">Day B</div>
+  </div>
+</div>
+
+<!-- ═══════════ DAY A ═══════════ -->
+<div class="panel active" id="panelA">
+
+  <div class="cat lower">
+    <div class="cat-hdr">
+      <div class="cat-dot"></div>
+      <div class="cat-title">Lower Body</div>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Goblet Squat</div>
+        <div class="ex-cue">Hold dumbbell at chest. Feet shoulder-width. Sit back and down — keep chest tall throughout.</div>
+      </div>
+      <div class="ex-badge">3 × 12</div>
+    </div>
+  </div>
+
+  <div class="cat push">
+    <div class="cat-hdr">
+      <div class="cat-dot"></div>
+      <div class="cat-title">Push</div>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Machine Chest Press</div>
+        <div class="ex-cue">Adjust seat so handles align with mid-chest. Press forward smoothly — control the return, don't let the weight snap back.</div>
+      </div>
+      <div class="ex-badge">3 × 12</div>
+    </div>
+  </div>
+
+  <div class="cat pull">
+    <div class="cat-hdr">
+      <div class="cat-dot"></div>
+      <div class="cat-title">Pull</div>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Lat Pulldown</div>
+        <div class="ex-cue">Slight lean back. Pull bar to upper chest. Keep shoulders down the whole time — don't let them shrug at the top.</div>
+      </div>
+      <div class="ex-badge">3 × 12</div>
+    </div>
+  </div>
+
+  <div class="cat core">
+    <div class="cat-hdr">
+      <div class="cat-dot"></div>
+      <div class="cat-title">Core</div>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Plank</div>
+        <div class="ex-cue">Straight line from head to heels. Brace your abs hard. Don't let hips rise or sag — quality over time.</div>
+      </div>
+      <div class="ex-badge">2 × 30s</div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Dead Bug</div>
+        <div class="ex-cue">Lower back pressed flat to the floor the entire time. Extend opposite arm and leg slowly — speed kills the point of this one.</div>
+      </div>
+      <div class="ex-badge">2 × 10</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════ DAY B ═══════════ -->
+<div class="panel" id="panelB">
+
+  <div class="cat lower">
+    <div class="cat-hdr">
+      <div class="cat-dot"></div>
+      <div class="cat-title">Lower Body</div>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Hack Squat</div>
+        <div class="ex-cue">Start at machine weight (~80lb) and check form first. Feet hip-width on platform. Control the descent — pause at the bottom before driving up.</div>
+      </div>
+      <div class="ex-badge">3 × 10</div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Reverse Lunge</div>
+        <div class="ex-cue">Step back until both knees reach 90°. Front foot stays flat the whole time. Drive through your front heel to stand back up.</div>
+      </div>
+      <div class="ex-badge">3 × 10 / leg</div>
+    </div>
+  </div>
+
+  <div class="cat push">
+    <div class="cat-hdr">
+      <div class="cat-dot"></div>
+      <div class="cat-title">Push</div>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Machine Shoulder Press</div>
+        <div class="ex-cue">Seat adjusted so handles start at shoulder height. Press overhead — keep a slight bend at the top, don't fully lock out.</div>
+      </div>
+      <div class="ex-badge">3 × 12</div>
+    </div>
+  </div>
+
+  <div class="cat pull">
+    <div class="cat-hdr">
+      <div class="cat-dot"></div>
+      <div class="cat-title">Pull</div>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Seated Cable Row</div>
+        <div class="ex-cue">Sit tall throughout — don't hunch or round. Pull handle to lower ribs and squeeze shoulder blades together at the end.</div>
+      </div>
+      <div class="ex-badge">3 × 12</div>
+    </div>
+  </div>
+
+  <div class="cat core">
+    <div class="cat-hdr">
+      <div class="cat-dot"></div>
+      <div class="cat-title">Core</div>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Side Plank</div>
+        <div class="ex-cue">Hip lifted, straight line from head to feet. Stack or stagger feet for balance. Complete each side fully before switching.</div>
+      </div>
+      <div class="ex-badge">2 × 30s / side</div>
+    </div>
+    <div class="ex">
+      <div class="ex-body">
+        <div class="ex-name">Bird Dog</div>
+        <div class="ex-cue">On all fours, hands under shoulders. Extend opposite arm and leg — keep your back flat and hips square. Slow and controlled wins here.</div>
+      </div>
+      <div class="ex-badge">2 × 10</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PHASE NOTE -->
+<div class="phase-note">
+  <div class="phase-note-title">Phase 1 Focus</div>
+  <div class="phase-note-body">First 2–3 weeks are about learning the movements and finding your weights. Don't rush load increases — get the pattern solid first. That's where the real progress starts.</div>
+</div>
+
+<script>
+function switchDay(day) {
+  document.querySelectorAll('.tab').forEach(function(t, i) {
+    t.classList.toggle('active', (day === 'a' && i === 0) || (day === 'b' && i === 1));
+  });
+  document.getElementById('panelA').classList.toggle('active', day === 'a');
+  document.getElementById('panelB').classList.toggle('active', day === 'b');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Scroll shadow on header
+var hdr = document.getElementById('hdr');
+window.addEventListener('scroll', function() {
+  hdr.classList.toggle('raised', window.scrollY > 4);
+}, { passive: true });
+</script>
+</body>
+</html>
