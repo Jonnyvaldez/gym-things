@@ -1010,6 +1010,7 @@ function updNav(){
 
 function calcStreak(){
   var curDone=[0,1,2,3,4].every(function(d){return!!st['w'+wk+'_dd'+d]});
+  // If current week isn't done yet, count streak from previous week
   var start=curDone?wk:wk-1;var streak=0;
   for(var w=start;w>=1;w--){
     if([0,1,2,3,4].every(function(d){return!!st['w'+w+'_dd'+d]}))streak++;else break;
@@ -1033,7 +1034,7 @@ function checkWeekComplete(){
 
 window.dismissBanner=function(){
   st['_dismissed_wk'+wk]=true;sv();
-  document.getElementById('completionBanner').classList.remove('show');
+  var el=document.getElementById('completionBanner');if(el)el.classList.remove('show');
 };
 
 // Inputs
