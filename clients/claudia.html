@@ -448,6 +448,14 @@
   /* ---- FOOTER ---- */
   .ftr{text-align:center;padding:24px 16px;font-size:.68em;color:var(--text-muted)}
   .ftr .br{color:var(--pink);font-weight:600}
+  /* ---- STREAK + COMPLETION BANNER ---- */
+  #streakBadge{color:var(--pink);font-weight:600}
+  .completion-banner{
+    display:none;text-align:center;padding:9px 16px;
+    background:var(--mint-fill);color:var(--mint);
+    font-size:.76em;font-weight:600;cursor:pointer;border-bottom:1px solid var(--mint-soft);
+  }
+  .completion-banner.show{display:block}
 </style>
 </head>
 <body>
@@ -458,7 +466,7 @@
     <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">&#9789;</button>
   </div>
   <h1>Claudia's Program</h1>
-  <div class="hdr-sub">12-Week Body Recomp &bull; March &rarr; June 2026</div>
+  <div class="hdr-sub">12-Week Body Recomp &bull; March &rarr; June 2026<span id="streakBadge"></span></div>
 </div>
 
 <div class="wk">
@@ -467,6 +475,7 @@
   <button class="wk-btn" onclick="chWk(1)">&#8250;</button>
 </div>
 
+<div class="completion-banner" id="completionBanner" onclick="dismissBanner()"></div>
 <nav class="nav" id="nav">
   <div class="nav-t on" onclick="go(0)">Day 1</div>
   <div class="nav-t" onclick="go(1)">Day 2</div>
@@ -892,7 +901,7 @@ function sv(){try{localStorage.setItem(SK,JSON.stringify(st))}catch(e){}}
 function wkey(k){return'w'+wk+'_'+k}
 
 // Week
-window.chWk=function(d){wk=Math.max(1,Math.min(12,wk+d));st._week=wk;sv();document.getElementById('wkL').textContent='Week '+wk+' of 12';restore();updPhase();updHints()};
+window.chWk=function(d){wk=Math.max(1,Math.min(12,wk+d));st._week=wk;sv();document.getElementById('wkL').textContent='Week '+wk+' of 12';restore();updPhase();updHints();updStreak();checkWeekComplete()};
 
 function updPhase(){
   var ph=getPhase(),el=document.getElementById('phaseBanner');
@@ -984,7 +993,7 @@ function updProg(d){
 
 // Day done
 window.dayDone=function(d){
-  var k=wkey('dd'+d);st[k]=!st[k];sv();updDone();updNav();
+  var k=wkey('dd'+d);st[k]=!st[k];sv();updDone();updNav();updStreak();checkWeekComplete();
 };
 
 function updDone(){
@@ -999,6 +1008,34 @@ function updNav(){
   for(var d=0;d<5;d++)ts[d].classList.toggle('done-day',!!st[wkey('dd'+d)]);
 }
 
+function calcStreak(){
+  var curDone=[0,1,2,3,4].every(function(d){return!!st['w'+wk+'_dd'+d]});
+  var start=curDone?wk:wk-1;var streak=0;
+  for(var w=start;w>=1;w--){
+    if([0,1,2,3,4].every(function(d){return!!st['w'+w+'_dd'+d]}))streak++;else break;
+  }
+  return streak;
+}
+
+function updStreak(){
+  var s=calcStreak(),el=document.getElementById('streakBadge');
+  if(!el)return;
+  el.textContent=s>0?' \u2022 '+s+'-week streak':'';
+}
+
+function checkWeekComplete(){
+  var allDone=[0,1,2,3,4].every(function(d){return!!st[wkey('dd'+d)]});
+  var el=document.getElementById('completionBanner');if(!el)return;
+  if(allDone&&!st['_dismissed_wk'+wk]){
+    el.textContent='Week '+wk+' done. Keep going.';el.classList.add('show');
+  }else{el.classList.remove('show')}
+}
+
+window.dismissBanner=function(){
+  st['_dismissed_wk'+wk]=true;sv();
+  document.getElementById('completionBanner').classList.remove('show');
+};
+
 // Inputs
 document.addEventListener('input',function(e){var k=e.target.dataset.k;if(k){st[wkey(k)]=e.target.value;sv()}});
 // Refresh hints when she logs weight (on blur so it doesn't flicker while typing)
@@ -1010,7 +1047,7 @@ function restore(){
     var on=st[wkey('ck_d'+c.dataset.d+'e'+c.dataset.i)]||false;
     c.querySelector('.xck').classList.toggle('on',on);c.classList.toggle('ok',on);
   });
-  for(var d=0;d<5;d++)updProg(d);updDone();updNav();updPhase();updHints();renderFood();
+  for(var d=0;d<5;d++)updProg(d);updDone();updNav();updPhase();updHints();renderFood();updStreak();checkWeekComplete();
 }
 
 window.rstWk=function(){if(!confirm('Reset all tracking for Week '+wk+'?'))return;var p='w'+wk+'_';Object.keys(st).forEach(function(k){if(k.indexOf(p)===0)delete st[k]});sv();restore()};
