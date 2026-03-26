@@ -753,7 +753,7 @@
 
 <script>
 (function(){
-var SK='claudia-v4',wk=1,st=ld(),curMeal=0;
+var SK='claudia-v4',st=ld(),wk=st._week||1,curMeal=0;
 
 // Theme toggle
 var isDark=st._theme==='dark';
@@ -892,7 +892,7 @@ function sv(){try{localStorage.setItem(SK,JSON.stringify(st))}catch(e){}}
 function wkey(k){return'w'+wk+'_'+k}
 
 // Week
-window.chWk=function(d){wk=Math.max(1,Math.min(12,wk+d));document.getElementById('wkL').textContent='Week '+wk+' of 12';restore();updPhase();updHints()};
+window.chWk=function(d){wk=Math.max(1,Math.min(12,wk+d));st._week=wk;sv();document.getElementById('wkL').textContent='Week '+wk+' of 12';restore();updPhase();updHints()};
 
 function updPhase(){
   var ph=getPhase(),el=document.getElementById('phaseBanner');
