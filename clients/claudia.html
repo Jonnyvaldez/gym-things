@@ -293,6 +293,34 @@
   /* ---- FOOTER ---- */
   .ftr{text-align:center;padding:24px 16px;font-size:.68em;color:var(--text-muted)}
   .ftr .br{color:var(--pink);font-weight:600}
+  .bkp-link{background:none;border:none;color:var(--text-muted);font-size:1em;font-family:inherit;cursor:pointer;margin-top:8px;text-decoration:underline;display:inline-block;padding:0}
+
+  /* ---- BACKUP MODAL ---- */
+  .bkp-modal{
+    display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+    background:rgba(0,0,0,.6);z-index:200;
+    align-items:flex-end;justify-content:center;
+  }
+  .bkp-modal.show{display:flex}
+  .bkp-sheet{
+    background:var(--surface);border-radius:20px 20px 0 0;
+    padding:20px 16px 40px;width:100%;max-height:80vh;overflow-y:auto;position:relative;
+  }
+  .bkp-title{font-size:.88em;font-weight:700;margin-bottom:4px;color:var(--text)}
+  .bkp-sub{font-size:.72em;color:var(--text-muted);margin-bottom:10px;line-height:1.4}
+  .bkp-textarea{
+    width:100%;height:80px;background:var(--bg);border:1px solid var(--border);
+    border-radius:var(--radius-sm);padding:10px;color:var(--text);
+    font-size:.66em;font-family:monospace;resize:none;outline:none;margin-bottom:8px;
+  }
+  .bkp-btn{
+    display:block;width:100%;padding:12px;border-radius:var(--radius-sm);
+    font-size:.8em;font-weight:600;font-family:inherit;cursor:pointer;margin-bottom:8px;
+  }
+  .bkp-btn.primary{background:var(--pink);border:none;color:#fff}
+  .bkp-btn.danger{background:none;border:1.5px solid #e55;color:#e55}
+  .bkp-divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+  .bkp-close{position:absolute;top:14px;right:16px;font-size:1.4em;color:var(--text-muted);cursor:pointer;line-height:1;background:none;border:none;font-family:inherit}
   /* ---- STREAK + COMPLETION BANNER ---- */
   #streakBadge{color:var(--pink);font-weight:600}
   .completion-banner{
@@ -585,7 +613,22 @@
 
 <button class="rst" id="mainRst" onclick="rstWk()">Reset This Week</button>
 
-<div class="ftr">Program by <span class="br">Jonny Valdez</span><br>Domain Athletics &mdash; Folsom, CA</div>
+<div class="ftr">Program by <span class="br">Jonny Valdez</span><br>Domain Athletics &mdash; Folsom, CA<br><button class="bkp-link" onclick="openBkp()">Backup / Restore data</button></div>
+
+<div class="bkp-modal" id="bkpModal" onclick="if(event.target===this)closeBkp()">
+  <div class="bkp-sheet">
+    <button class="bkp-close" onclick="closeBkp()">&times;</button>
+    <div class="bkp-title">Export Your Data</div>
+    <div class="bkp-sub">Copy all the text below and save it somewhere — send it to yourself or to Jonny. You'll need it to restore on a new device or URL.</div>
+    <textarea class="bkp-textarea" id="bkpExportTxt" readonly></textarea>
+    <button class="bkp-btn primary" onclick="copyBkp(this)">Copy Data</button>
+    <hr class="bkp-divider">
+    <div class="bkp-title">Import / Restore Data</div>
+    <div class="bkp-sub">Paste your exported data below. This replaces everything currently saved.</div>
+    <textarea class="bkp-textarea" id="bkpImportTxt" placeholder="Paste your exported data here..."></textarea>
+    <button class="bkp-btn danger" onclick="doImport()">Restore Data</button>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -845,6 +888,40 @@ document.querySelectorAll('.xc').forEach(function(card){
 });
 
 restore();
+
+// ===== BACKUP / RESTORE =====
+window.openBkp=function(){
+  document.getElementById('bkpExportTxt').value=localStorage.getItem(SK)||'{}';
+  document.getElementById('bkpImportTxt').value='';
+  document.getElementById('bkpModal').classList.add('show');
+};
+window.closeBkp=function(){
+  document.getElementById('bkpModal').classList.remove('show');
+};
+window.copyBkp=function(btn){
+  var el=document.getElementById('bkpExportTxt');
+  el.select();el.setSelectionRange(0,99999);
+  try{
+    document.execCommand('copy');
+    btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent='Copy Data'},2000);
+  }catch(e){
+    alert('Long-press the text above, select all, then copy.');
+  }
+};
+window.doImport=function(){
+  var val=document.getElementById('bkpImportTxt').value.trim();
+  if(!val){alert('Nothing to import.');return}
+  try{
+    JSON.parse(val);
+  }catch(e){
+    alert('Invalid data \u2014 make sure you copied the full export text.');
+    return;
+  }
+  if(!confirm('This will replace ALL your current data with the imported data. Continue?'))return;
+  localStorage.setItem(SK,val);
+  location.reload();
+};
 })();
 </script>
 </body>
